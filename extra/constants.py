@@ -1,9 +1,12 @@
-PATH_CLOSED = "C:/Users/thxsg/Documents/1. Thesis Data/thesis_closed/"
-PATH_CUT = "C:/Users/thxsg/Documents/1. Thesis Data/thesis_cut/"
+PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"
+PATH_CLOSED = f"{PATH}thesis_closed/"
+PATH_CUT = f"{PATH}thesis_cut/"
 
 CLASS_H = "Healthy"  # Class 0
 CLASS_MCI = "MCI"    # Class 1
 CLASS_AD = "AD"      # Class 2
+
+CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
 
 BATCH_NUMBER = 1000
 
