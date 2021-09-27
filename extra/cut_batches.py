@@ -28,8 +28,8 @@ for label in CLASS_LIST:
             # Cut into batches, append into a numpy array of shape (-1, 1000, 19) and count to create labels
             length = len(df)
             for batch in range(int(length/1000)):
-                exec(f"df_{batch} = df[BATCH_NUMBER*batch: BATCH_NUMBER*(batch+1)]")
-                exec(f"data.append(df_{batch}.to_numpy())")
+                cut = df[BATCH_NUMBER*batch: BATCH_NUMBER*(batch+1)]
+                data.append(cut.to_numpy())
                 counts[CLASS_LIST.index(label)] += 1
 
 x_array = np.array(data)
