@@ -7,7 +7,6 @@ UNITS = 64
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"
 PATH_CLOSED = f"{PATH}thesis_closed/"
-PATH_CUT = f"{PATH}thesis_cut/"
 
 # Classes
 CLASS_H = "Healthy"  # Class 0
