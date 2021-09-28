@@ -5,8 +5,8 @@ INPUT_DIM = 5
 UNITS = 64
 
 # Paths
-PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"
-PATH_CLOSED = f"{PATH}thesis_closed/"
+PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"  # Here, the numpy data will be stored
+PATH_CLOSED = f"{PATH}thesis_closed/"              # Here, is where the folder with the data is. For example here: .../thesis_closed/AD/patient1_closed1.pkl
 
 # Classes
 CLASS_H = "Healthy"  # Class 0
