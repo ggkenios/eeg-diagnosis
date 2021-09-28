@@ -1,6 +1,7 @@
 # Thesis
 
 ### Files
+<br>
 
 * <a href="https://github.com/Ggkenios/thesis/blob/main/extra/constants.py">Constants</a> <br>
    - Set paths, model, hyperparameters, and other needed constants.
