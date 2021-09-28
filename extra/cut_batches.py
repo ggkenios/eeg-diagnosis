@@ -13,6 +13,7 @@ from extra.constants import PATH, PATH_CLOSED, CLASS_LIST, CHANNELS, CUTS_NUMBER
 
 # Count labels for each class to create label data
 counts = [0, 0, 0]
+# Append 2D arrays in an empty list and in the end turn them into a 3D array
 data = []
 
 for label in CLASS_LIST:
