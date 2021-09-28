@@ -28,7 +28,7 @@ for label in CLASS_LIST:
         else:
             # Cut into batches, append into a numpy array of shape (-1, 1000, 19) and count to create labels
             length = len(df)
-            for batch in range(int(length/1000)):
+            for batch in range(int(length/CUTS_NUMBER)):
                 cut = df[CUTS_NUMBER*batch: CUTS_NUMBER*(batch+1)]
                 data.append(cut.to_numpy())
                 counts[CLASS_LIST.index(label)] += 1
