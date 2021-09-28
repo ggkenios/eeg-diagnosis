@@ -15,7 +15,9 @@ CLASS_AD = "AD"      # Class 2
 CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
 
 # Rest
-CUTS_NUMBER = 1000  # 500 rows equal to 1 second
+CUTS_NUMBER = 1000   # 500 rows equal to 1 second
+
+TEST_SIZE = 0.2      # Train-Test Ratio
 
 CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 'F8', 'T3', 'T4', 'T5', 'T6', 'Fz', 'Cz', 'Pz']
 
