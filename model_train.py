@@ -5,7 +5,7 @@ import numpy as np
 from tensorflow import keras
 from sklearn.model_selection import train_test_split
 
-from extra.constants import PATH, EPOCHS, BATCH_SIZE, UNITS, RESHAPED, INPUT_DIM, OUTPUT_SIZE
+from extra.constants import PATH, EPOCHS, BATCH_SIZE, UNITS, RESHAPED, INPUT_DIM, OUTPUT_SIZE, TEST_SIZE
 
 
 #############
@@ -22,7 +22,7 @@ x_train, x_test, y_train, y_test = train_test_split(
     x,
     y,
     stratify=y,
-    test_size=0.2,
+    test_size=TEST_SIZE,
     random_state=1)
 
 
