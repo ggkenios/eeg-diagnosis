@@ -1,15 +1,9 @@
-##################
-#  1. Libraries  #
-
 import numpy as np
 import pandas as pd
 from os import listdir
 
 from extra.constants import PATH, PATH_CLOSED, CLASS_LIST, CHANNELS, CUTS_NUMBER
 
-
-#############
-#  2. Code  #
 
 # Count labels for each class to create label data
 counts = [0, 0, 0]

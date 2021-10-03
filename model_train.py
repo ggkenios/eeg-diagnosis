@@ -1,15 +1,9 @@
-##################
-#  1. Libraries  #
-
 import numpy as np
 from tensorflow import keras
 from sklearn.model_selection import train_test_split
 
 from extra.constants import PATH, EPOCHS, BATCH_SIZE, UNITS, RESHAPED, INPUT_DIM, OUTPUT_SIZE, TEST_SIZE
 
-
-#############
-#  2. Code  #
 
 # Get data
 x = np.load(f"{PATH}x_data.npy")
