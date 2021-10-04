@@ -12,7 +12,7 @@ def model_build():
         [
             keras.layers.LSTM(UNITS, input_shape=(RESHAPED, INPUT_DIM)),
             keras.layers.BatchNormalization(),
-            keras.layers.Dense(OUTPUT_SIZE),
+            keras.layers.Dense(64),
             keras.layers.Dropout(0.3),
             keras.layers.Dense(OUTPUT_SIZE),
         ]
