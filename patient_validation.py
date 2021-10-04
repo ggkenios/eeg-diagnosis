@@ -74,3 +74,5 @@ for label in CLASS_LIST:
                     dic["t2_p1"] += 1
                 elif prediction == 2:
                     dic["t2_p2"] += 1
+
+print(dic)
