@@ -13,4 +13,5 @@ from common.constants import (PATH,
                               CHANNELS,
                               CUTS_NUMBER,
                               checkpoint_acc,
+                              dic,
                               )

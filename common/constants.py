@@ -33,3 +33,15 @@ CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 
 
 OUTPUT_SIZE = len(CLASS_LIST)
 RESHAPED = int(CUTS_NUMBER * len(CHANNELS) / INPUT_DIM)
+
+dic = {
+    "t0_p0": 0,
+    "t0_p1": 0,
+    "t0_p2": 0,
+    "t1_p0": 0,
+    "t1_p1": 0,
+    "t1_p2": 0,
+    "t2_p0": 0,
+    "t2_p1": 0,
+    "t2_p2": 0,
+}
