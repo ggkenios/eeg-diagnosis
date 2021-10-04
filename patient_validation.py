@@ -5,7 +5,8 @@ from os import listdir
 from common import *
 
 # Load trained model
-model = model_compile(model_build())
+model = model_build()
+model_compile(model)
 model.load_weights(f"{PATH}checkpoint.h5")
 
 x = np.load(f"{PATH}x_data.npy")
