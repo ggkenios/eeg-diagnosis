@@ -22,7 +22,7 @@ def model_build():
 
 def model_compile(model):
     return model.compile(
-        loss=losses.CategoricalCrossentropy(optimizer="Adam"),
+        loss=losses.SparseCategoricalCrossentropy(),
         optimizer=tf.keras.optimizers.Adam(LEARNING_RATE, decay=LEARNING_RATE * 0.1),
         metrics=["accuracy"],
     )

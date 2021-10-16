@@ -1,4 +1,5 @@
 import numpy as np
+import tensorflow as tf
 from sklearn.model_selection import train_test_split
 
 from common import *
@@ -16,6 +17,11 @@ x_train, x_test, y_train, y_test = train_test_split(
     stratify=y,
     test_size=TEST_SIZE,
     random_state=1)
+
+x_train = tf.convert_to_tensor(x_train)
+x_test = tf.convert_to_tensor(x_test)
+y_train = tf.convert_to_tensor(y_train)
+y_test = tf.convert_to_tensor(y_test)
 
 # Build and compile the model
 model = model_build()
