@@ -9,10 +9,6 @@ model = model_build()
 model_compile(model)
 model.load_weights(f"{PATH}checkpoint.h5")
 
-x = np.load(f"{PATH}x_data.npy")
-y = np.load(f"{PATH}y_data.npy")
-x = x.reshape((len(y), RESHAPED, INPUT_DIM))
-
 
 for label in CLASS_LIST:
     for file in listdir(f"{PATH_CLOSED}{label}/"):
