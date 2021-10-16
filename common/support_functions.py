@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers, models, losses
 
-from common.constants import UNITS, RESHAPED, INPUT_DIM, OUTPUT_SIZE, LEARNING_RATE
+from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE, LEARNING_RATE
 
 
 def model_build():
@@ -10,7 +10,7 @@ def model_build():
     # Model
     rnn_model = models.Sequential(
         [
-            layers.LSTM(UNITS, input_shape=(RESHAPED, INPUT_DIM)),
+            layers.LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             layers.BatchNormalization(),
             layers.Dense(64, activation='relu'),
             layers.Dropout(0.3),

@@ -4,8 +4,7 @@ import tensorflow as tf
 LEARNING_RATE = 0.01
 BATCH_SIZE = 64
 EPOCHS = 5
-INPUT_DIM = 5
-UNITS = 64
+UNITS = 64  # LSTM
 
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"  # Here, the numpy data will be stored
@@ -22,17 +21,27 @@ CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
 checkpoint_acc = tf.keras.callbacks.ModelCheckpoint(
     filepath=f"{PATH}checkpoint.h5",
     monitor='val_accuracy',
-    save_best_only=True)
+    save_best_only=True
+)
+
+# Reducer
+lr_reducer = tf.keras.callbacks.ReduceLROnPlateau(
+    monitor='val_loss',
+    factor=0.1**(1/2),
+    mode='min',
+    patience=3,
+    min_lr=0.5e-6,
+    verbose=1
+)
 
 # Rest
-CUTS_NUMBER = 1000   # 500 rows equal to 1 second
+TIME_POINTS = 1000   # 500 equal to 1 second
 
 TEST_SIZE = 0.2      # Train-Test Ratio
 
 CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 'F8', 'T3', 'T4', 'T5', 'T6', 'Fz', 'Cz', 'Pz']
-
+NUMBER_OF_CHANNELS = len(CHANNELS)
 OUTPUT_SIZE = len(CLASS_LIST)
-RESHAPED = int(CUTS_NUMBER * len(CHANNELS) / INPUT_DIM)
 
 dic = {
     "t0_p0": 0,

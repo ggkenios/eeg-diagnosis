@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-from os import listdir
 
 from common import *
 
@@ -9,53 +7,46 @@ model = model_build()
 model_compile(model)
 model.load_weights(f"{PATH}checkpoint.h5")
 
+# Load data
+x = np.load(f"{PATH}x_data.npy")
+y = np.load(f"{PATH}y_data.npy")
+z = np.load(f"{PATH}z_data.npy")
 
-for label in CLASS_LIST:
-    for file in listdir(f"{PATH_CLOSED}{label}/"):
+# Variables
+all_predictions = [0, 0, 0]
+i = 0  # Track iteration
+k = 0  # Track patient
 
-        # Read pickle files as Dataframes iteratively
-        df = pd.DataFrame(pd.read_pickle(f"{PATH_CLOSED}{label}/{file}"), columns=CHANNELS)
-        length = len(df)
+while True:
+    while i < len(y):
+        if z[i] == k:
+            result = model.predict(x[i].reshape(1, TIME_POINTS, NUMBER_OF_CHANNELS))
+            predict_label = np.argmax(result, axis=-1)
+            predicted = int(str(predict_label)[1])
+            all_predictions[predicted] += 1
 
-        data = []
-        all_predictions = [0, 0, 0]
+            i += 1
 
-        if length < CUTS_NUMBER:
-            pass
         else:
-            # Cut into batches, append into a numpy array of shape (-1, 1000, 19) and count to create labels
-            length = len(df)
-            for batch in range(int(length/CUTS_NUMBER)):
-                cut = df[CUTS_NUMBER*batch: CUTS_NUMBER*(batch+1)]
-                data.append(cut.to_numpy())
-
-            # Predict for every 2-second piece
-            for piece in data:
-                result = model.predict(piece.reshape(1, RESHAPED, INPUT_DIM))
-                predict_label = np.argmax(result, axis=-1)
-                predicted = int(str(predict_label)[1])
-                all_predictions[predicted] += 1
-
-            # Majority vote for each patient
             prediction = all_predictions.index(max(all_predictions))
-            print(prediction)
+            print("Prediction: ", prediction, "  ||   Patient: ", k + 1, "/", len(set(z)))
 
             # Create the 3x3 confusion matrix
-            if label == CLASS_LIST[0]:
+            if y[i] == 0:
                 if prediction == 0:
                     dic["t0_p0"] += 1
                 elif prediction == 1:
                     dic["t0_p1"] += 1
                 elif prediction == 2:
                     dic["t0_p2"] += 1
-            if label == CLASS_LIST[1]:
+            elif y[i] == 1:
                 if prediction == 0:
                     dic["t1_p0"] += 1
                 elif prediction == 1:
                     dic["t1_p1"] += 1
                 elif prediction == 2:
                     dic["t1_p2"] += 1
-            if label == CLASS_LIST[2]:
+            elif y[i] == 2:
                 if prediction == 0:
                     dic["t2_p0"] += 1
                 elif prediction == 1:
@@ -63,4 +54,10 @@ for label in CLASS_LIST:
                 elif prediction == 2:
                     dic["t2_p2"] += 1
 
+            all_predictions = [0, 0, 0]
+            k += 1
+
+    break
+
 print(dic)
+

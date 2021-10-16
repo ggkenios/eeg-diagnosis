@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 array = [
         [19, 0, 0],
         [1, 24, 0],
-        [1, 1, 4],
+        [0, 0, 6],
         ]
 df_cm = pd.DataFrame(array,
                      index=CLASS_LIST,
