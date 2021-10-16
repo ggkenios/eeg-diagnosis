@@ -28,7 +28,7 @@ model = model_build()
 model_compile(model)
 
 # Start training
-model.fit(
+history = model.fit(
     x_train,
     y_train,
     validation_data=(x_test, y_test),
