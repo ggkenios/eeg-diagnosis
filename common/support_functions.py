@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow import keras
+from tensorflow.keras import layers, models, losses
 
 from common.constants import UNITS, RESHAPED, INPUT_DIM, OUTPUT_SIZE, LEARNING_RATE
 
@@ -8,13 +8,13 @@ def model_build():
     """Creating an RNN model"""
 
     # Model
-    rnn_model = keras.models.Sequential(
+    rnn_model = models.Sequential(
         [
-            keras.layers.LSTM(UNITS, input_shape=(RESHAPED, INPUT_DIM)),
-            keras.layers.BatchNormalization(),
-            keras.layers.Dense(64),
-            keras.layers.Dropout(0.3),
-            keras.layers.Dense(OUTPUT_SIZE),
+            layers.LSTM(UNITS, input_shape=(RESHAPED, INPUT_DIM)),
+            layers.BatchNormalization(),
+            layers.Dense(64, activation='relu'),
+            layers.Dropout(0.3),
+            layers.Dense(OUTPUT_SIZE, activation='softmax'),
         ]
     )
     return rnn_model
@@ -22,7 +22,7 @@ def model_build():
 
 def model_compile(model):
     return model.compile(
-        loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+        loss=losses.CategoricalCrossentropy(optimizer="Adam"),
         optimizer=tf.keras.optimizers.Adam(LEARNING_RATE, decay=LEARNING_RATE * 0.1),
         metrics=["accuracy"],
     )
