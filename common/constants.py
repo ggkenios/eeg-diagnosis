@@ -3,7 +3,7 @@ import tensorflow as tf
 # Model hyper-parameters
 LEARNING_RATE = 0.01
 BATCH_SIZE = 64
-EPOCHS = 5
+EPOCHS = 30
 UNITS = 128  # LSTM
 
 # Paths

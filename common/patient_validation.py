@@ -30,11 +30,11 @@ while True:
             i += 1
 
         else:
-            majority_vote(all_predictions, dic)
+            majority_vote(all_predictions, dic, k, i, y, z)
             all_predictions = [0, 0, 0]
             k += 1
 
-    majority_vote(all_predictions, dic)
+    majority_vote(all_predictions, dic, k, i, y, z)
     break
 
 print(dic)
