@@ -12,7 +12,7 @@
 
 #### Majority Vote
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/patient_validation.py">Constants</a> <br>
-   - Set paths, model, hyperparameters, and other needed constants.
+   - Support code, for <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">plots.py</a> <br> to calculate majority vote, after the model is trained
 <br>
 
 ### <a href="https://github.com/Ggkenios/thesis/blob/main/data_preperation.py">Data Preperation</a> <br>
@@ -29,12 +29,9 @@
    - Creates a simple LSTM model with 128 units --> Batch Normalization --> Dense(64, activation="relu") --> Dense(3, activation="softmax")
    - Train it.
    
-
-
 <br>
 
-### Plots
-* <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">Plots</a> <br>
+### <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">Plots</a> <br>
    - Creates a confusion matrix plot for all patients.
-   - 
+
 <br>
