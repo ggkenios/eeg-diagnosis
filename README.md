@@ -6,13 +6,14 @@
    - Set paths, model, hyperparameters, and other needed constants.
 <br>
 
-* <a href="https://github.com/Ggkenios/thesis/blob/main/common/support_functions.py">Constants</a> <br>
+* <a href="https://github.com/Ggkenios/thesis/blob/main/common/support_functions.py">Support Functions</a> <br>
    - Functions to: Create model, compile model, calculate majority vote
 <br>
 
 #### Majority Vote
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/patient_validation.py">Constants</a> <br>
-   - Support code, for <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">plots.py</a> <br> to calculate majority vote, after the model is trained
+   - Support code, for <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">plots.py</a> to calculate majority vote, after the model is trained
+<br>
 <br>
 
 ### <a href="https://github.com/Ggkenios/thesis/blob/main/data_preperation.py">Data Preperation</a> <br>
