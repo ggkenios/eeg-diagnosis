@@ -5,7 +5,12 @@ from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE
 
 
 def model_build():
-    """Building an RNN model"""
+    """Building an RNN model
+
+    Returns:
+        class: Keras sequential model
+
+    """
 
     # Model
     rnn_model = models.Sequential(
@@ -25,6 +30,10 @@ def model_compile(model):
 
     Arg:
         model (class): Tensorflow model
+
+    Returns:
+        class: Compiled model
+
     """
 
     return model.compile(
@@ -42,11 +51,11 @@ def majority_vote(all_predictions: list, dic: dict):
     y[i]: Is the label for the i-th data cut.
 
     Args:
-        all_predictions (list): [0, 5, 3] e.g. Which means, out of the 8 2-second data for a specific patient
-                                0 were classified as Healthy, 5 as MCI, and 3 as AD
-
+        all_predictions (list): [0, 5, 3] e.g. out of the 8 2-second data for a specific patient 0 were Healthy,
+                                5 MCI, and 3 AD
         dic (dict): A dictionary with 9 key value pairs. We add +1 on the corresponding value, based on
                     what the Label was (0, 1 or 2) and what the prediction was (0, 1 or 2).
+
     """
 
     prediction = all_predictions.index(max(all_predictions))
