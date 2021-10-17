@@ -10,7 +10,7 @@ def model_build():
     # Model
     rnn_model = models.Sequential(
         [
-            layers.LSTM(int(UNITS*2), input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            layers.LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             layers.BatchNormalization(),
             layers.Dense(64, activation='relu'),
             layers.Dropout(0.3),

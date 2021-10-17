@@ -4,7 +4,7 @@ import tensorflow as tf
 LEARNING_RATE = 0.01
 BATCH_SIZE = 64
 EPOCHS = 5
-UNITS = 64  # LSTM
+UNITS = 128  # LSTM
 
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"  # Here, the numpy data will be stored
