@@ -61,7 +61,7 @@ def majority_vote(all_predictions: list, dic: dict):
     prediction = all_predictions.index(max(all_predictions))
     print("Prediction: ", prediction, "  ||   Patient: ", k + 1, "/", len(set(z)))
 
-    # Create the 3x3 confusion matrix
+    # Add +1 on dictionary values to form the 3x3 confusion matrix
     if y[i-1] == 0:
         if prediction == 0:
             dic["t0_p0"] += 1
