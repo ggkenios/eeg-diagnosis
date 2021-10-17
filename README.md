@@ -34,7 +34,6 @@
    - Creates a simple LSTM model with 128 units --> Batch Normalization --> Dense(64, activation="relu") --> Dense(3, activation="softmax")
    - Train it.
    
-</body>
 
 
 <br>
@@ -44,3 +43,5 @@
    - Creates a confusion matrix plot for all patients.
    - 
 <br>
+   
+</body>
