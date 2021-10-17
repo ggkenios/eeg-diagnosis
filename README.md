@@ -1,6 +1,6 @@
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; <img src="https://i.imgur.com/UwbMboU.png" width="190" height="200">
 
-# &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Thesis
+# &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp Thesis
 
 ### <a href="https://github.com/Ggkenios/thesis/tree/main/common">Common Folder</a> <br>
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/constants.py">Constants</a> <br>
