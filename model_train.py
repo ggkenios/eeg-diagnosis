@@ -30,11 +30,12 @@ if __name__ == "__main__":
     model = model_build()
     model_compile(model)
 
+    # Start training
     history = model.fit(
         x_train,
         y_train,
         validation_data=(x_val, y_val),
         batch_size=BATCH_SIZE,
         epochs=EPOCHS,
-        callbacks=checkpoint_acc,
+        callbacks=[checkpoint_acc, lr_reducer],
     )

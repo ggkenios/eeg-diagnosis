@@ -13,5 +13,6 @@ from common.constants import (
     CLASS_LIST,
     CHANNELS,
     checkpoint_acc,
+    lr_reducer,
     dic,
 )
