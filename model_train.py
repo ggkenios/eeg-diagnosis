@@ -16,7 +16,7 @@ if __name__ == "__main__":
         x,
         y,
         stratify=y,
-        test_size=TEST_SIZE,
+        test_size=VALIDATION_SIZE,
         random_state=1,
         )
 

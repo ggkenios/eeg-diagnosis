@@ -35,9 +35,9 @@ lr_reducer = tf.keras.callbacks.ReduceLROnPlateau(
 )
 
 # Rest
-TIME_POINTS = 1000   # 500 equal to 1 second
+TIME_POINTS = 1000     # 500 equal to 1 second
 
-TEST_SIZE = 0.2      # Train-Test Ratio
+VALIDATION_SIZE = 0.2  # Train-Test Ratio
 
 CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 'F8', 'T3', 'T4', 'T5', 'T6', 'Fz', 'Cz', 'Pz']
 NUMBER_OF_CHANNELS = len(CHANNELS)
