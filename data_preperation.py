@@ -32,11 +32,11 @@ if __name__ == "__main__":
                 c += 1
 
     # To numpy arrays
-    x_array = np.array(data)
-    y_array = np.array([0] * counts[0] + [1] * counts[1] + [2] * counts[2])
-    z_array = np.array(patients)
+    x = np.array(data)
+    y = np.array([0] * counts[0] + [1] * counts[1] + [2] * counts[2])
+    z = np.array(patients)
 
     # Save data as .npy files
-    np.save(f"{PATH}x_data.npy", x_array)
-    np.save(f"{PATH}y_data.npy", y_array)
-    np.save(f"{PATH}z_data.npy", z_array)
+    np.save(f"{PATH}x_data.npy", x)
+    np.save(f"{PATH}y_data.npy", y)
+    np.save(f"{PATH}z_data.npy", z)
