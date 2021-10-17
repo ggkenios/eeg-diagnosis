@@ -15,7 +15,7 @@ array = [
 df_cm = pd.DataFrame(
     array,
     index=CLASS_LIST,
-    columns=CLASS_LIST
+    columns=CLASS_LIST,
 )
 
 plt.figure(figsize=(10, 7))
