@@ -7,6 +7,7 @@
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/constants.py">Constants</a> <br>
    - Set paths, model, hyperparameters, and other needed constants.
 <br>
+
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/support_functions.py">Constants</a> <br>
    - Functions to: Create model, compile model, calculate majority vote
 <br>
