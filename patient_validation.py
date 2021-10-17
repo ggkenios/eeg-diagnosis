@@ -18,6 +18,7 @@ all_predictions = [0, 0, 0]
 i = 0  # Track iteration
 k = 0  # Track patient
 
+# Iterate through data, and make a majority vote prediction for each patient
 while True:
     while i < len(y):
         if z[i] == k:
