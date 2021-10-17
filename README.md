@@ -10,7 +10,7 @@
    - Functions to: Create model, compile model, calculate majority vote
 <br>
 
-#### <a href="https://github.com/Ggkenios/thesis/blob/main/common/patient_validation.py">Patient Validation</a> <br>
+* <a href="https://github.com/Ggkenios/thesis/blob/main/common/patient_validation.py">Patient Validation</a> <br>
    - Support code, for <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">plots.py</a> to calculate majority vote, after the model is trained
 <br>
 <br>
