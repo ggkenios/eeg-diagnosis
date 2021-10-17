@@ -2,6 +2,7 @@ import numpy as np
 
 from common import *
 
+
 # Load trained model
 model = model_build()
 model_compile(model)
@@ -28,36 +29,11 @@ while True:
             i += 1
 
         else:
-            prediction = all_predictions.index(max(all_predictions))
-            print("Prediction: ", prediction, "  ||   Patient: ", k + 1, "/", len(set(z)))
-
-            # Create the 3x3 confusion matrix
-            if y[i] == 0:
-                if prediction == 0:
-                    dic["t0_p0"] += 1
-                elif prediction == 1:
-                    dic["t0_p1"] += 1
-                elif prediction == 2:
-                    dic["t0_p2"] += 1
-            elif y[i] == 1:
-                if prediction == 0:
-                    dic["t1_p0"] += 1
-                elif prediction == 1:
-                    dic["t1_p1"] += 1
-                elif prediction == 2:
-                    dic["t1_p2"] += 1
-            elif y[i] == 2:
-                if prediction == 0:
-                    dic["t2_p0"] += 1
-                elif prediction == 1:
-                    dic["t2_p1"] += 1
-                elif prediction == 2:
-                    dic["t2_p2"] += 1
-
+            majority_vote(all_predictions, dic)
             all_predictions = [0, 0, 0]
             k += 1
 
+    majority_vote(all_predictions, dic)
     break
 
 print(dic)
-

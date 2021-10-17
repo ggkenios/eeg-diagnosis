@@ -1,4 +1,4 @@
-from common.support_functions import model_compile, model_build
+from common.support_functions import model_compile, model_build, majority_vote
 from common.constants import (
     PATH,
     EPOCHS,

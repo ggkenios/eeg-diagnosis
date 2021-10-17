@@ -1,16 +1,23 @@
+from patient_validation import dic
 from common import CLASS_LIST
 
 import seaborn as sn
 import pandas as pd
 import matplotlib.pyplot as plt
+
+
 array = [
-        [19, 0, 0],
-        [1, 24, 0],
-        [0, 0, 6],
+        [dic["t0_p0"], dic["t0_p1"], dic["t0_p2"]],
+        [dic["t1_p0"], dic["t1_p1"], dic["t1_p2"]],
+        [dic["t2_p0"], dic["t2_p1"], dic["t2_p2"]],
         ]
-df_cm = pd.DataFrame(array,
-                     index=CLASS_LIST,
-                     columns=CLASS_LIST)
+
+df_cm = pd.DataFrame(
+    array,
+    index=CLASS_LIST,
+    columns=CLASS_LIST
+)
+
 plt.figure(figsize=(10, 7))
 sn.heatmap(df_cm, annot=True)
 
