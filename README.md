@@ -1,8 +1,6 @@
 # Thesis
 
 ### Common Folder
-<br>
-
 #### Constants and Functions
 * <a href="https://github.com/Ggkenios/thesis/blob/main/common/constants.py">Constants</a> <br>
    - Set paths, model, hyperparameters, and other needed constants.
