@@ -27,7 +27,7 @@
 ### <a href="https://github.com/Ggkenios/thesis/blob/main/model_train.py">Model Train</a> <br>
    - Reads the numpy files created from data_preperation.py
    - Splits them into train and test data, 80-20, in a balanced way, in terms of labels in train and test sets.
-   - Creates a simple LSTM model with 128 units --> Batch Normalization --> Dense(64, activation="relu") --> Dense(3, activation="softmax")
+   - Read the model from support_functions.py
    - Train it.
    
 <br>
