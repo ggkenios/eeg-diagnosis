@@ -5,7 +5,7 @@ from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE
 
 
 def model_build():
-    """Creating an RNN model"""
+    """Building an RNN model"""
 
     # Model
     rnn_model = models.Sequential(
@@ -21,6 +21,12 @@ def model_build():
 
 
 def model_compile(model):
+    """Compile the model
+
+    Arg:
+        model (class): Tensorflow model
+    """
+
     return model.compile(
         loss=losses.SparseCategoricalCrossentropy(),
         optimizer=tf.keras.optimizers.Adam(LEARNING_RATE, decay=LEARNING_RATE * 0.1),
@@ -29,6 +35,20 @@ def model_compile(model):
 
 
 def majority_vote(all_predictions: list, dic: dict):
+    """Creates a majority vote prediction. Not easy to understand
+
+    Some extra info needed are:
+    i: Iterator. In range from (0, 4502), with 4502 being the number of 2-second data cuts.
+    y[i]: Is the label for the i-th data cut.
+
+    Args:
+        all_predictions (list): [0, 5, 3] e.g. Which means, out of the 8 2-second data for a specific patient
+                                0 were classified as Healthy, 5 as MCI, and 3 as AD
+
+        dic (dict): A dictionary with 9 key value pairs. We add +1 on the corresponding value, based on
+                    what the Label was (0, 1 or 2) and what the prediction was (0, 1 or 2).
+    """
+
     prediction = all_predictions.index(max(all_predictions))
     print("Prediction: ", prediction, "  ||   Patient: ", k + 1, "/", len(set(z)))
 
