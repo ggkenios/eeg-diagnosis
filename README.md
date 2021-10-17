@@ -1,3 +1,5 @@
+<body style="background-color:powderblue;">
+
 # Thesis
 
 ### Common Folder
@@ -31,6 +33,9 @@
    - Splits them into train and test data, 80-20, in a balanced way, in terms of labels in train and test sets.
    - Creates a simple LSTM model with 128 units --> Batch Normalization --> Dense(64, activation="relu") --> Dense(3, activation="softmax")
    - Train it.
+   
+</body>
+
 
 <br>
 
