@@ -16,10 +16,9 @@ def model_build():
     # Model
     rnn_model = models.Sequential(
         [
-            layers.LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            layers.Bidirectional(layers.LSTM(UNITS, return_sequences=True), input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            layers.Bidirectional(layers.LSTM(int(UNITS/2))),
             layers.BatchNormalization(),
-            layers.Dense(64, activation='relu'),
-            layers.Dropout(0.3),
             layers.Dense(OUTPUT_SIZE, activation='softmax'),
         ]
     )
@@ -38,7 +37,7 @@ def model_compile(model):
     """
 
     return model.compile(
-        loss=losses.SparseCategoricalCrossentropy(),
+        loss=losses.CategoricalCrossentropy(),
         optimizer=tf.keras.optimizers.Adam(LEARNING_RATE, decay=LEARNING_RATE * 0.1),
         metrics=["accuracy"],
     )

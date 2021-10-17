@@ -1,10 +1,16 @@
 import tensorflow as tf
 
 # Model hyper-parameters
-LEARNING_RATE = 0.01
+LEARNING_RATE = 0.001
 BATCH_SIZE = 64
 EPOCHS = 30
-UNITS = 128  # LSTM
+UNITS = 128  # LSTM Units
+
+# Cut data into batches
+TIME_POINTS = 1000     # 500 equal to 1 second
+
+# Train-Test Ratio
+VALIDATION_SIZE = 0.2
 
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"  # Here, the numpy data will be stored
@@ -35,10 +41,6 @@ lr_reducer = tf.keras.callbacks.ReduceLROnPlateau(
 )
 
 # Rest
-TIME_POINTS = 1000     # 500 equal to 1 second
-
-VALIDATION_SIZE = 0.2  # Train-Test Ratio
-
 CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 'F8', 'T3', 'T4', 'T5', 'T6', 'Fz', 'Cz', 'Pz']
 NUMBER_OF_CHANNELS = len(CHANNELS)
 OUTPUT_SIZE = len(CLASS_LIST)

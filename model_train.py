@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.utils import to_categorical
 
 from common import *
 
@@ -13,7 +14,7 @@ if __name__ == "__main__":
     y = np.load(f"{PATH}y_data.npy")
 
     # Train-Test Split
-    x_train, x_val, y_train, y_val = train_test_split(
+    x_train, x_test, y_train, y_test = train_test_split(
         x,
         y,
         stratify=y,
@@ -23,9 +24,9 @@ if __name__ == "__main__":
 
     # To tensorflow tensors
     x_train = tf.convert_to_tensor(x_train)
-    x_val = tf.convert_to_tensor(x_val)
-    y_train = tf.convert_to_tensor(y_train)
-    y_val = tf.convert_to_tensor(y_val)
+    x_test = tf.convert_to_tensor(x_test)
+    y_train = tf.convert_to_tensor(to_categorical(y_train, OUTPUT_SIZE))
+    y_test = tf.convert_to_tensor(to_categorical(y_test, OUTPUT_SIZE))
 
     # Build and compile the model
     model = model_build()
@@ -35,7 +36,7 @@ if __name__ == "__main__":
     history = model.fit(
         x_train,
         y_train,
-        validation_data=(x_val, y_val),
+        validation_data=(x_test, y_test),
         batch_size=BATCH_SIZE,
         epochs=EPOCHS,
         callbacks=[checkpoint_acc, lr_reducer],
