@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # Model hyper-parameters
 LEARNING_RATE = 0.001
-BATCH_SIZE = 64
+BATCH_SIZE = 128
 EPOCHS = 30
 UNITS = 128  # LSTM Units
 

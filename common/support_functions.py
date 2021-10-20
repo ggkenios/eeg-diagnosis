@@ -1,7 +1,7 @@
 import numpy
 import tensorflow as tf
-from tensorflow.keras import layers, models, losses
-
+from tensorflow.keras import models, losses
+from tensorflow.keras.layers import LSTM, Bidirectional, Dense, BatchNormalization
 from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE, LEARNING_RATE
 
 
@@ -16,10 +16,11 @@ def model_build():
     # Model
     rnn_model = models.Sequential(
         [
-            layers.Bidirectional(layers.LSTM(UNITS, return_sequences=True), input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
-            layers.Bidirectional(layers.LSTM(int(UNITS/2))),
-            layers.BatchNormalization(),
-            layers.Dense(OUTPUT_SIZE, activation='softmax'),
+            LSTM(64, return_sequences=True, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            LSTM(64, return_sequences=True),
+            LSTM(32),
+            BatchNormalization(),
+            Dense(OUTPUT_SIZE, activation='softmax'),
         ]
     )
     return rnn_model

@@ -28,15 +28,18 @@ if __name__ == "__main__":
     y_train = tf.convert_to_tensor(to_categorical(y_train, OUTPUT_SIZE))
     y_test = tf.convert_to_tensor(to_categorical(y_test, OUTPUT_SIZE))
 
+    # To tensorflow dataset
+    train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
+    validation = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
+
     # Build and compile the model
     model = model_build()
     model_compile(model)
 
     # Start training
     history = model.fit(
-        x_train,
-        y_train,
-        validation_data=(x_test, y_test),
+        train,
+        validation_data=validation,
         batch_size=BATCH_SIZE,
         epochs=EPOCHS,
         callbacks=[checkpoint_acc, lr_reducer],
