@@ -4,7 +4,7 @@ import tensorflow as tf
 LEARNING_RATE = 0.001
 BATCH_SIZE = 128
 EPOCHS = 30
-UNITS = 128  # LSTM Units
+UNITS = 64  # LSTM Units
 
 # Cut data into batches
 TIME_POINTS = 1000     # 500 equal to 1 second
