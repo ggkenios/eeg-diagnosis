@@ -19,22 +19,21 @@ i = 0  # Track iteration
 k = 0  # Track patient
 
 # Iterate through data, and make a majority vote prediction for each patient
-while True:
-    while i < len(y):
-        if z[i] == k:
-            result = model.predict(x[i].reshape(1, TIME_POINTS, NUMBER_OF_CHANNELS))
-            predict_label = np.argmax(result, axis=-1)
-            predicted = int(str(predict_label)[1])
-            all_predictions[predicted] += 1
+while i < len(y):
+    if z[i] == k:
+        result = model.predict(x[i].reshape(1, TIME_POINTS, NUMBER_OF_CHANNELS))
+        predict_label = np.argmax(result, axis=-1)
+        predicted = int(str(predict_label)[1])
+        all_predictions[predicted] += 1
 
-            i += 1
+        i += 1
 
-        else:
-            majority_vote(all_predictions, dic, k, i, y, z)
-            all_predictions = [0, 0, 0]
-            k += 1
+    else:
+        majority_vote(all_predictions, dic, k, i, y, z)
+        all_predictions = [0, 0, 0]
+        k += 1
+# After the final 2-second batch is predicted for the last patient, we take majority vote, as else won't be reached
+majority_vote(all_predictions, dic, k, i, y, z)
 
-    majority_vote(all_predictions, dic, k, i, y, z)
-    break
-
+# Results
 print(dic)
