@@ -1,10 +1,11 @@
 import tensorflow as tf
 
 # Model hyper-parameters
-LEARNING_RATE = 0.001
+LEARNING_RATE = 0.01
 BATCH_SIZE = 128
-EPOCHS = 30
-UNITS = 64  # LSTM Units
+EPOCHS = 40
+UNITS = 128
+RESHUFFLE = True
 
 # Cut data into batches
 TIME_POINTS = 1000     # 500 equal to 1 second

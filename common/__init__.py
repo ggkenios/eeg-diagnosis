@@ -8,6 +8,7 @@ from common.constants import (
     OUTPUT_SIZE,
     CLASS_LIST,
     BATCH_SIZE,
+    RESHUFFLE,
     CHANNELS,
     EPOCHS,
     UNITS,

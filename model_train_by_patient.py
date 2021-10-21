@@ -8,6 +8,7 @@ from common import (
     OUTPUT_SIZE,
     BATCH_SIZE,
     EPOCHS,
+    RESHUFFLE,
     checkpoint_acc,
     lr_reducer,
     model_build,
@@ -30,7 +31,7 @@ if __name__ == "__main__":
      x_test,
      y_train,
      y_test,
-     ) = train_test_set(x, y, patient_counts, 8, 12, 15, 30, 40, 42, 44, 45, 47, 48)
+     ) = train_test_set(x, y, patient_counts, 8, 12, 15, 30, 40, 42, 44, 45, 47, 48, 49)
 
     # To tensorflow tensors
     x_train = tf.convert_to_tensor(x_train)
@@ -39,7 +40,9 @@ if __name__ == "__main__":
     y_test = tf.convert_to_tensor(to_categorical(y_test, OUTPUT_SIZE))
 
     # To tensorflow dataset
-    train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
+    train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
+        .shuffle(buffer_size=x.shape[0], seed=1, reshuffle_each_iteration=RESHUFFLE)\
+        .batch(BATCH_SIZE)
     validation = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
 
     # Build and compile the model
