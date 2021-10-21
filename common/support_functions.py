@@ -16,9 +16,9 @@ def model_build():
     # Model
     rnn_model = models.Sequential(
         [
-            LSTM(64, return_sequences=True, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
-            LSTM(64, return_sequences=True),
-            LSTM(32),
+            LSTM(UNITS, return_sequences=True, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            LSTM(UNITS, return_sequences=True),
+            LSTM(int(UNITS/2)),
             BatchNormalization(),
             Dense(OUTPUT_SIZE, activation='softmax'),
         ]
