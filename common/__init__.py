@@ -1,4 +1,12 @@
-from common.support_functions import model_compile, model_build, majority_vote, train_test_set, plot_curves
+from common.support_functions import (
+    tensor_preparation,
+    train_test_set_split,
+    model_compile,
+    majority_vote,
+    model_build_2,
+    model_build,
+    plot_curves,
+)
 from common.constants import (
     NUMBER_OF_CHANNELS,
     VALIDATION_SIZE,

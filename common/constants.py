@@ -26,7 +26,13 @@ CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
 
 # Checkpoints
 checkpoint_acc = tf.keras.callbacks.ModelCheckpoint(
-    filepath=f"{PATH}checkpoint.h5",
+    filepath=f"{PATH}Checkpoints/Normal split/checkpoint.h5",
+    monitor='val_accuracy',
+    save_best_only=True
+)
+
+checkpoint_acc_2 = tf.keras.callbacks.ModelCheckpoint(
+    filepath=f"{PATH}Checkpoints/Patient split/checkpoint.h5",
     monitor='val_accuracy',
     save_best_only=True
 )

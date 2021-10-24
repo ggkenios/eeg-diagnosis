@@ -3,6 +3,10 @@ import numpy as np
 from common import *
 
 
+####################################################################
+#  Support code for plots.py as it is imported and run through it  #
+####################################################################
+
 # Load trained model
 model = model_build()
 model_compile(model)
