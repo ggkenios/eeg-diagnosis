@@ -1,10 +1,10 @@
 import tensorflow as tf
 
 # Model hyper-parameters
-LEARNING_RATE = 0.01
-BATCH_SIZE = 128
+LEARNING_RATE = 0.001
+BATCH_SIZE = 32
 EPOCHS = 40
-UNITS = 128
+UNITS = 1024
 RESHUFFLE = True
 
 # Cut data into batches

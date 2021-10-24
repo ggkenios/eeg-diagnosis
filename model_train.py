@@ -1,6 +1,5 @@
 import numpy as np
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import to_categorical
 
@@ -29,8 +28,10 @@ if __name__ == "__main__":
     y_test = tf.convert_to_tensor(to_categorical(y_test, OUTPUT_SIZE))
 
     # To tensorflow dataset
-    train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
-    validation = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(BATCH_SIZE)
+    train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
+        .shuffle(buffer_size=x.shape[0], seed=1, reshuffle_each_iteration=RESHUFFLE)\
+        .batch(BATCH_SIZE)
+    validation = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(BATCH_SIZE)
 
     # Build and compile the model
     model = model_build()
@@ -45,19 +46,6 @@ if __name__ == "__main__":
         callbacks=[checkpoint_acc, lr_reducer],
     )
 
-    # Accuracy plot
-    plt.plot(history.history['accuracy'], label='accuracy')
-    plt.plot(history.history['val_accuracy'], label='val_accuracy')
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy')
-    plt.ylim([0.5, 1])
-    plt.legend(loc='best')
-    plt.show()
+    # Accuracy - loss plots
+    plot_curves(history, ['accuracy', 'loss'])
 
-    # Loss plot
-    plt.plot(history.history['loss'], label='loss')
-    plt.plot(history.history['val_loss'], label='val_loss')
-    plt.xlabel('Epoch')
-    plt.ylabel('Loss')
-    plt.legend(loc='best')
-    plt.show()

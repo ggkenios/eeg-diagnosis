@@ -1,4 +1,4 @@
-from common.support_functions import model_compile, model_build, majority_vote, train_test_set
+from common.support_functions import model_compile, model_build, majority_vote, train_test_set, plot_curves
 from common.constants import (
     NUMBER_OF_CHANNELS,
     VALIDATION_SIZE,

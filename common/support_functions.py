@@ -2,8 +2,9 @@ import numpy
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import models, losses
-from tensorflow.keras.layers import LSTM, Bidirectional, Dense, BatchNormalization
+from tensorflow.keras.layers import LSTM, Bidirectional, Dense, BatchNormalization, Dropout, Activation
 from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE, LEARNING_RATE
+import matplotlib.pyplot as plt
 
 
 def model_build():
@@ -11,14 +12,16 @@ def model_build():
 
     Returns:
         class: Keras sequential model
-
     """
 
-    # Model
     rnn_model = models.Sequential(
         [
             LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             BatchNormalization(),
+            Dense(9),
+            BatchNormalization(),
+            Activation('relu'),
+            Dropout(0.3),
             Dense(OUTPUT_SIZE, activation='softmax'),
         ]
     )
@@ -122,3 +125,21 @@ def train_test_set(x_array: numpy.array, y_array: numpy.array, dic: dict, *args:
     y_train = np.delete(y_array, index_list, axis=0)
 
     return x_train, x_test, y_train, y_test
+
+
+def plot_curves(history, metrics):
+    """Plot metrics"""
+
+    nrows = 1
+    ncols = 2
+    fig = plt.figure(figsize=(10, 5))
+
+    for idx, key in enumerate(metrics):
+        ax = fig.add_subplot(nrows, ncols, idx + 1)
+        plt.plot(history.history[key])
+        plt.plot(history.history['val_{}'.format(key)])
+        plt.title('model {}'.format(key))
+        plt.ylabel(key)
+        plt.xlabel('epoch')
+        plt.legend(['train', 'validation'], loc='upper left');
+
