@@ -4,7 +4,7 @@ from common import (
     PATH,
     BATCH_SIZE,
     EPOCHS,
-    checkpoint_acc,
+    checkpoint_acc_2,
     lr_reducer,
     model_build_2,
     model_compile,
@@ -42,7 +42,7 @@ history = model.fit(
     validation_data=validation,
     batch_size=BATCH_SIZE,
     epochs=EPOCHS,
-    callbacks=[checkpoint_acc, lr_reducer],
+    callbacks=[checkpoint_acc_2, lr_reducer],
 )
 
 # Accuracy - loss plots

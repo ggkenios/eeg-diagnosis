@@ -21,6 +21,7 @@ from common.constants import (
     EPOCHS,
     UNITS,
     PATH,
+    checkpoint_acc_2,
     checkpoint_acc,
     lr_reducer,
     dic,
