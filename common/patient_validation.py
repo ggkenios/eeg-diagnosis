@@ -10,11 +10,12 @@ model_no = 2
 
 if model_no == 1:
     cp_path = f"{PATH}Checkpoints/Normal split/checkpoint.h5"
+    model = model_build()
 else:
-    cp_path = f"{PATH}Checkpoints/Patient split/checkpoint.h5",
+    cp_path = f"{PATH}Checkpoints/Patient split/checkpoint.h5"
+    model = model_build_2()
 
 # Load trained model
-model = model_build()
 model_compile(model)
 model.load_weights(cp_path)
 
