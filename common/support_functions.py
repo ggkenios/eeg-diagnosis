@@ -43,9 +43,9 @@ def model_build_2():
 
     rnn_model = models.Sequential(
         [
-            LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            LSTM(1024, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             BatchNormalization(),
-            Dense(9),
+            Dense(16),
             BatchNormalization(),
             Activation('relu'),
             Dropout(0.3),
