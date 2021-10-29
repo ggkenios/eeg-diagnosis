@@ -33,6 +33,6 @@
 <br>
 
 ## <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">Plots</a> <br>
-   - Creates a confusion matrix plot for all patients using hard majority vote on each ones segments.
+   - Creates a confusion matrix plot for all patients using hard majority vote on each one's segments.
 
 <br>
