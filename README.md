@@ -32,6 +32,13 @@
    
 <br>
 
+## <a href="https://github.com/Ggkenios/thesis/blob/main/model_train_by_patient.py">Model Train by patient</a> <br>
+   - Reads the numpy files created from data_preperation.py
+   - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set.
+   - Read the model from support_functions.py
+   - Train it.
+   
+<br>
 ## <a href="https://github.com/Ggkenios/thesis/blob/main/plots.py">Plots</a> <br>
    - Creates a confusion matrix plot for all patients using hard majority vote on each one's segments.
 
