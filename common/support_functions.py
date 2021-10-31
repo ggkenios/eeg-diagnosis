@@ -22,12 +22,16 @@ def model_build():
 
     rnn_model = models.Sequential(
         [
-            LSTM(UNITS, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
-            BatchNormalization(),
-            Dense(9),
+            tf.keras.layers.Conv1D(UNITS, 3, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             BatchNormalization(),
             Activation('relu'),
-            Dropout(0.3),
+            Dropout(0.2),
+            LSTM(UNITS),
+            BatchNormalization(),
+            Dense(16, kernel_regularizer=tf.keras.regularizers.L1(0.001)),
+            BatchNormalization(),
+            Activation('relu'),
+            Dropout(0.2),
             Dense(OUTPUT_SIZE, activation='softmax'),
         ]
     )
@@ -149,7 +153,8 @@ def plot_curves(history, metrics):
         plt.title('model {}'.format(key))
         plt.ylabel(key)
         plt.xlabel('epoch')
-        plt.legend(['train', 'validation'], loc='upper left');
+        plt.legend(['train', 'validation'], loc='upper left')
+        plt.show()
 
 
 def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: numpy.ndarray, z: numpy.ndarray):

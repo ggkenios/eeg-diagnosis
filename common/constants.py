@@ -4,7 +4,7 @@ import tensorflow as tf
 LEARNING_RATE = 0.001
 BATCH_SIZE = 32
 EPOCHS = 40
-UNITS = 1024
+UNITS = 512
 RESHUFFLE = True
 
 # Cut data into batches

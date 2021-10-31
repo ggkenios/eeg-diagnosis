@@ -6,7 +6,7 @@ from common import (
     EPOCHS,
     checkpoint_acc_2,
     lr_reducer,
-    model_build_2,
+    model_build,
     model_compile,
     train_test_set_split,
     plot_curves,
@@ -33,7 +33,7 @@ patient_counts = dict(zip(unique, counts))
 train, validation = tensor_preparation(x_train, x_test, y_train, y_test)
 
 # Build and compile the model
-model = model_build_2()
+model = model_build()
 model_compile(model)
 
 # Start training
