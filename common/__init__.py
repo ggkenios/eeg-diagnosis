@@ -1,6 +1,6 @@
 from common.support_functions import (
-    tensor_preparation,
     train_test_set_split,
+    tensor_preparation,
     model_compile,
     majority_vote,
     model_build_2,
