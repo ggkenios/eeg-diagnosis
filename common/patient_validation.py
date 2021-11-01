@@ -13,7 +13,7 @@ if model_no == 1:
     model = model_build()
 else:
     cp_path = f"{PATH}Checkpoints/Patient split/checkpoint.h5"
-    model = model_build_2()
+    model = model_build()
 
 # Load trained model
 model_compile(model)
