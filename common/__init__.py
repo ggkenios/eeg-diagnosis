@@ -11,7 +11,6 @@ from common.constants import (
     NUMBER_OF_CHANNELS,
     VALIDATION_SIZE,
     LEARNING_RATE,
-    PATH_CLOSED,
     TIME_POINTS,
     OUTPUT_SIZE,
     CLASS_LIST,

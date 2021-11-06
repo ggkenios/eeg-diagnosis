@@ -16,7 +16,6 @@ VALIDATION_SIZE = 0.2
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data"
 PATH_DATA = f"{PATH}/my_dataset/"
-PATH_CLOSED = f"{PATH}/thesis_closed/"
 
 # Classes
 CLASS_H = "Healthy"  # Class 0
