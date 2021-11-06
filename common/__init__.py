@@ -16,6 +16,7 @@ from common.constants import (
     OUTPUT_SIZE,
     CLASS_LIST,
     BATCH_SIZE,
+    PATH_DATA,
     RESHUFFLE,
     CHANNELS,
     EPOCHS,

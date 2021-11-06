@@ -226,6 +226,22 @@ pyparsing = ">=2.2.1"
 python-dateutil = ">=2.7"
 
 [[package]]
+name = "mne"
+version = "0.24.0"
+description = "MNE-Python project for MEG and EEG data analysis."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+numpy = ">=1.15.4"
+scipy = ">=1.1.0"
+
+[package.extras]
+data = ["tqdm", "pooch"]
+test = ["pytest (!=4.6.0)", "pytest-cov", "pytest-timeout", "pytest-harvest", "flake8", "flake8-array-spacing", "numpydoc", "codespell", "pydocstyle", "check-manifest", "twine", "wheel", "pooch", "nitime", "nbclient", "sphinx-gallery", "eeglabio", "edflib-python", "imageio-ffmpeg"]
+
+[[package]]
 name = "numpy"
 version = "1.19.5"
 description = "NumPy is the fundamental package for array computing with Python."
@@ -602,7 +618,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "7304cbfec1c3578ab373db73e5507b7d787498cd5d63ba0516915e5247aec7e7"
+content-hash = "b167dc9e14ada9c9b766604ef72de55237ba4e12c659b0bf449e6ddc455b23e8"
 
 [metadata.files]
 absl-py = [
@@ -802,6 +818,10 @@ matplotlib = [
     {file = "matplotlib-3.4.3-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:556965514b259204637c360d213de28d43a1f4aed1eca15596ce83f768c5a56f"},
     {file = "matplotlib-3.4.3-pp37-pypy37_pp73-manylinux2010_x86_64.whl", hash = "sha256:54a026055d5f8614f184e588f6e29064019a0aa8448450214c0b60926d62d919"},
     {file = "matplotlib-3.4.3.tar.gz", hash = "sha256:fc4f526dfdb31c9bd6b8ca06bf9fab663ca12f3ec9cdf4496fb44bc680140318"},
+]
+mne = [
+    {file = "mne-0.24.0-py3-none-any.whl", hash = "sha256:43968423f00236be6d06162225765d30c5dba33ebb3e97d5b462f2dcca03eba8"},
+    {file = "mne-0.24.0.tar.gz", hash = "sha256:188b4228ef4c97630afdc8b3b1fe97a6a0425473ca098d22e823f0b5a32d3322"},
 ]
 numpy = [
     {file = "numpy-1.19.5-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:cc6bd4fd593cb261332568485e20a0712883cf631f6f5e8e86a52caa8b2b50ff"},

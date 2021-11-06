@@ -2,7 +2,7 @@ import tensorflow as tf
 
 # Model hyper-parameters
 LEARNING_RATE = 0.001
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 EPOCHS = 40
 UNITS = 512
 RESHUFFLE = True
@@ -14,9 +14,9 @@ TIME_POINTS = 1000     # 500 equal to 1 second
 VALIDATION_SIZE = 0.2
 
 # Paths
-PATH = "C:/Users/thxsg/Documents/1. Thesis Data/"  # Here, the numpy data will be stored
-PATH_CLOSED = f"{PATH}thesis_closed/"              # Here, is where the folder with the data is. For example here:
-#                                                    .../thesis_closed/AD/patient1_closed1.pkl
+PATH = "C:/Users/thxsg/Documents/1. Thesis Data"
+PATH_DATA = f"{PATH}/my_dataset/"
+PATH_CLOSED = f"{PATH}/thesis_closed/"
 
 # Classes
 CLASS_H = "Healthy"  # Class 0
@@ -26,13 +26,13 @@ CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
 
 # Checkpoints
 checkpoint_acc = tf.keras.callbacks.ModelCheckpoint(
-    filepath=f"{PATH}Checkpoints/Normal split/checkpoint.h5",
+    filepath=f"{PATH}/Checkpoints/Normal split/checkpoint.h5",
     monitor='val_accuracy',
     save_best_only=True
 )
 
 checkpoint_acc_2 = tf.keras.callbacks.ModelCheckpoint(
-    filepath=f"{PATH}Checkpoints/Patient split/checkpoint.h5",
+    filepath=f"{PATH}/Checkpoints/Patient split/checkpoint.h5",
     monitor='val_accuracy',
     save_best_only=True
 )

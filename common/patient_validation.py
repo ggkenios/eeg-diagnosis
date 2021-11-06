@@ -9,10 +9,10 @@ from common import *
 model_no = 2
 
 if model_no == 1:
-    cp_path = f"{PATH}Checkpoints/Normal split/checkpoint.h5"
+    cp_path = f"{PATH}/Checkpoints/Normal split/checkpoint.h5"
     model = model_build()
 else:
-    cp_path = f"{PATH}Checkpoints/Patient split/checkpoint.h5"
+    cp_path = f"{PATH}/Checkpoints/Patient split/checkpoint.h5"
     model = model_build()
 
 # Load trained model
@@ -20,9 +20,9 @@ model_compile(model)
 model.load_weights(cp_path)
 
 # Load data
-x = np.load(f"{PATH}x_data.npy")
-y = np.load(f"{PATH}y_data.npy")
-z = np.load(f"{PATH}z_data.npy")
+x = np.load(f"{PATH}/x_data.npy")
+y = np.load(f"{PATH}/y_data.npy")
+z = np.load(f"{PATH}/z_data.npy")
 
 # Variables
 all_predictions = [0, 0, 0]

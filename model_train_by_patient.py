@@ -15,9 +15,9 @@ from common import (
 
 
 # Read the data
-x = np.load(f"{PATH}x_data.npy")
-y = np.load(f"{PATH}y_data.npy")
-z = np.load(f"{PATH}z_data.npy")
+x = np.load(f"{PATH}/x_data.npy")
+y = np.load(f"{PATH}/y_data.npy")
+z = np.load(f"{PATH}/z_data.npy")
 
 unique, counts = np.unique(z, return_counts=True)
 patient_counts = dict(zip(unique, counts))

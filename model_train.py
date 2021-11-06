@@ -5,8 +5,8 @@ from common import *
 
 
 # Get data
-x = np.load(f"{PATH}x_data.npy")
-y = np.load(f"{PATH}y_data.npy")
+x = np.load(f"{PATH}/x_data.npy")
+y = np.load(f"{PATH}/y_data.npy")
 
 # Train-Test Split
 x_train, x_test, y_train, y_test = train_test_split(
