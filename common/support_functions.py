@@ -1,4 +1,3 @@
-import numpy
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import models, losses
@@ -81,7 +80,7 @@ def model_compile(model):
 #  2. Data processing  #
 ########################
 
-def train_test_set_split(x_array: numpy.array, y_array: numpy.array, dic: dict, *args: object) -> object:
+def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args: object) -> object:
     """Get the train test split by having as input the data and patient IDs to include in the training set.
 
     Args:
@@ -121,7 +120,7 @@ def train_test_set_split(x_array: numpy.array, y_array: numpy.array, dic: dict, 
     return x_train, x_test, y_train, y_test
 
 
-def tensor_preparation(x_train: numpy.ndarray, x_test: numpy.ndarray, y_train: numpy.ndarray, y_test: numpy.ndarray):
+def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndarray, y_test: np.ndarray):
     x_train = tf.convert_to_tensor(x_train)
     x_test = tf.convert_to_tensor(x_test)
     y_train = tf.convert_to_tensor(to_categorical(y_train, OUTPUT_SIZE))
@@ -157,7 +156,7 @@ def plot_curves(history, metrics):
         plt.show()
 
 
-def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: numpy.ndarray, z: numpy.ndarray):
+def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: np.ndarray, z: np.ndarray):
     """Creates a majority vote prediction.
 
     Args:
