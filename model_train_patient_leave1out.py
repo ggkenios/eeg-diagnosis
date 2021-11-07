@@ -7,6 +7,7 @@ from common import (
     EPOCHS,
     lr_reducer,
     model_build,
+    model_build_2,
     model_compile,
     train_test_set_split,
     tensor_preparation,
