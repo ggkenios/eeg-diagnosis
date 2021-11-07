@@ -63,6 +63,6 @@ for i in range(FOLDS):
     df = df.append(dictionary, ignore_index=True)
 
     # Save every update, to keep the process from where it stopped
-    df.to_csv(PATH + "/report_6fold.csv", index=False)
+    df.to_csv(f"{PATH}/report_6fold.csv", index=False)
 
-df.to_csv(PATH + "/report_6fold_f.csv", index=False)
+df.to_csv(f"{PATH}/report_6fold_f.csv", index=False)

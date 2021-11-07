@@ -60,7 +60,6 @@ for patient_out in range(54):
     df = df.append(dictionary, ignore_index=True)
 
     # Save the file on each iteration, so we can pick up from where we left, if we stop the code.
-    df.to_csv(PATH + "/report_leave1out.csv", index=False)
+    df.to_csv(f"{PATH}/report_leave1out.csv", index=False)
 
-df.to_csv(PATH + "/report_leave1out_f.csv", index=False)
-
+df.to_csv(f"{PATH}/report_leave1out_f.csv", index=False)
