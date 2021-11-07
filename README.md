@@ -7,12 +7,12 @@
    - Set paths, model, hyperparameters, and other needed constants.
 <br>
 
-* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/support_functions.py">Support Functions</a> <br>
-   - Functions to: Create model, compile model, calculate majority vote
+* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/support_functions.py">Functions</a> <br>
+   - Support functions to: Create model, compile model, split the dataset, numpy to tensorflow dataset transformations, majority vote, etc.
 <br>
 
-* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/patient_validation.py">Patient Validation</a> <br>
-   - Support code, for <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/plots.py">plots.py</a> to calculate majority vote, after the model is trained
+* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/confusion_matrix.py">Confusion Matrix</a> <br>
+   - Take the majority vote, after the model is trained, and create a confusion matrix, by patient.
 <br>
 <br>
 
