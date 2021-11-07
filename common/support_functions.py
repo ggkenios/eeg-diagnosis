@@ -80,7 +80,7 @@ def model_compile(model):
 #  2. Data processing  #
 ########################
 
-def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args: object) -> object:
+def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args: int) -> object:
     """Get the train test split by having as input the data and patient IDs to include in the training set.
 
     Args:
@@ -95,6 +95,7 @@ def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args:
         y_train: Train split of label data.
         y_test: Test split of label data.
     """
+    y_array = to_categorical(y_array)
 
     # First, we create a dictionary
     # Key: The starting data point of a specific patient
@@ -123,8 +124,8 @@ def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args:
 def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndarray, y_test: np.ndarray):
     x_train = tf.convert_to_tensor(x_train)
     x_test = tf.convert_to_tensor(x_test)
-    y_train = tf.convert_to_tensor(to_categorical(y_train, OUTPUT_SIZE))
-    y_test = tf.convert_to_tensor(to_categorical(y_test, OUTPUT_SIZE))
+    y_train = tf.convert_to_tensor(y_train)
+    y_test = tf.convert_to_tensor(y_test)
 
     train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
         .shuffle(buffer_size=y_train.shape[0]+y_test.shape[0], seed=1, reshuffle_each_iteration=RESHUFFLE)\

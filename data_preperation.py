@@ -1,6 +1,5 @@
 import mne
 import numpy as np
-import pandas as pd
 from os import listdir
 
 from common import PATH, PATH_DATA, CLASS_LIST, CHANNELS, TIME_POINTS
@@ -17,13 +16,10 @@ for label in CLASS_LIST:
     for patient in listdir(f"{PATH_DATA}/{label}"):
         file_path = f"{PATH_DATA}/{label}/{patient}"
 
-
         # Read the edf and get the annotations
         raw = mne.io.read_raw_edf(file_path)
         raw.pick_channels(CHANNELS)
         raw.load_data()
-        raw = raw.filter(0.1, 100)
-        raw = raw.notch_filter(50)
         anno = mne.events_from_annotations(raw)
 
         # Here we want to find starting and ending point for closed eyes.
@@ -34,6 +30,7 @@ for label in CLASS_LIST:
                         if anno[0][i][2] == anno[1][key]:
                             start = anno[0][i][0]
                             end = start + 150000
+                            break
 
         elif patient[:2] == "00":
             for key in anno[1].keys():
@@ -42,6 +39,7 @@ for label in CLASS_LIST:
                         if anno[0][i][2] == anno[1][key]:
                             start = anno[0][i][0]
                             end = start + 150000
+                            break
 
         array = np.array(raw.to_data_frame().iloc[:, 1:])[start: end]
         length = array.shape[0]

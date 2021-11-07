@@ -1,12 +1,14 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
-
+from tensorflow.keras.utils import to_categorical
 from common import *
 
 
 # Get data
 x = np.load(f"{PATH}/x_data.npy")
 y = np.load(f"{PATH}/y_data.npy")
+
+y = to_categorical(y)
 
 # Train-Test Split
 x_train, x_test, y_train, y_test = train_test_split(

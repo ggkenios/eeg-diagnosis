@@ -1,12 +1,3 @@
-from common.support_functions import (
-    train_test_set_split,
-    tensor_preparation,
-    model_compile,
-    majority_vote,
-    model_build_2,
-    model_build,
-    plot_curves,
-)
 from common.constants import (
     NUMBER_OF_CHANNELS,
     VALIDATION_SIZE,
@@ -25,4 +16,13 @@ from common.constants import (
     checkpoint_acc,
     lr_reducer,
     dic,
+)
+from common.support_functions import (
+    train_test_set_split,
+    tensor_preparation,
+    model_compile,
+    majority_vote,
+    model_build_2,
+    model_build,
+    plot_curves,
 )
