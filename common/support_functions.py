@@ -93,6 +93,7 @@ def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args:
         y_train: Train split of label data.
         y_test: Test split of label data.
     """
+    # 1-hot-encode labels
     y_array = to_categorical(y_array)
 
     # First, we create a dictionary
@@ -158,12 +159,12 @@ def plot_curves(history: tf.keras.callbacks.History, metrics: list) -> None:
         metrics: list of metrics to be plotted.
     """
 
-    nrows = 1
-    ncols = 2
+    n_rows = 1
+    n_cols = 2
     fig = plt.figure(figsize=(10, 5))
 
     for idx, key in enumerate(metrics):
-        ax = fig.add_subplot(nrows, ncols, idx + 1)
+        fig.add_subplot(n_rows, n_cols, idx + 1)
         plt.plot(history.history[key])
         plt.plot(history.history['val_{}'.format(key)])
         plt.title('model {}'.format(key))
@@ -178,9 +179,9 @@ def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: np.ndarra
 
     Args:
         all_predictions: List. Eg: [0, 5, 3] out of the 8 2-second data for a specific patient 0 were Healthy,
-                                5 MCI, and 3 AD.
+                         5 MCI, and 3 AD.
         dic: A dictionary with 9 key value pairs. We add +1 on the corresponding value, based on
-                    what the Label was (0, 1 or 2) and what the prediction was (0, 1 or 2).
+             what the Label was (0, 1 or 2) and what the prediction was (0, 1 or 2).
         k: An iterator to keep track of Patient's ID for each 2-second window.
         i: An iterator to keep track of the number of 2-second window.
         y: Numpy array of all labels for each 2-second window.
