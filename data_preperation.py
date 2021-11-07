@@ -1,5 +1,6 @@
 import mne
 import numpy as np
+import pandas as pd
 from os import listdir
 
 from common import PATH, PATH_DATA, CLASS_LIST, CHANNELS, TIME_POINTS
@@ -11,6 +12,9 @@ counts = [0, 0, 0]
 # Track Z: Patients
 c = 0
 patients = []
+# Report of the dataset
+col = ["Patient", "Start", "End", "Class"]
+df = pd.DataFrame(columns=col)
 
 for label in CLASS_LIST:
     for patient in listdir(f"{PATH_DATA}/{label}"):
@@ -52,6 +56,14 @@ for label in CLASS_LIST:
             patients.append(c)
         c += 1
 
+        dictionary = {
+            "Patient": patient.replace(".edf", ""),
+            "Start": start / 500,
+            "End": end / 500,
+            "Class": label,
+        }
+        df = df.append(dictionary, ignore_index=True)
+
 x = np.array(data)
 y = np.array([0] * counts[0] + [1] * counts[1] + [2] * counts[2])
 z = np.array(patients)
@@ -60,3 +72,4 @@ z = np.array(patients)
 np.save(f"{PATH}/x_data.npy", x)
 np.save(f"{PATH}/y_data.npy", y)
 np.save(f"{PATH}/z_data.npy", z)
+df.to_csv(PATH + "/dataset.csv", index=False)

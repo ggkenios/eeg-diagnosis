@@ -6,17 +6,12 @@ from common import *
 ####################################################################
 #  Support code for plots.py as it is imported and run through it  #
 ####################################################################
-model_no = 2
-
-if model_no == 1:
-    cp_path = f"{PATH}/Checkpoints/Normal split/checkpoint.h5"
-    model = model_build()
-else:
-    cp_path = f"{PATH}/Checkpoints/Patient split/checkpoint.h5"
-    model = model_build()
 
 # Load trained model
+model = model_build()
 model_compile(model)
+
+cp_path = f"{PATH}/Checkpoints/Patient split/checkpoint.h5"
 model.load_weights(cp_path)
 
 # Load data

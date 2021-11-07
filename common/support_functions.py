@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import models, losses
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import LSTM, Dense, BatchNormalization, Dropout, Activation, Bidirectional
+from tensorflow.keras.layers import LSTM, Dense, BatchNormalization, Dropout, Activation
 import matplotlib.pyplot as plt
 
 from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE, LEARNING_RATE, RESHUFFLE, BATCH_SIZE
@@ -16,7 +16,7 @@ def model_build():
     """Building an RNN model
 
     Returns:
-        class: Keras sequential model
+        Keras sequential model
     """
 
     rnn_model = models.Sequential(
@@ -41,7 +41,7 @@ def model_build_2():
     """Building an RNN model
 
     Returns:
-        class: Keras sequential model
+        Keras sequential model
     """
 
     rnn_model = models.Sequential(
@@ -58,15 +58,11 @@ def model_build_2():
     return rnn_model
 
 
-def model_compile(model):
+def model_compile(model) -> None:
     """Compile the model
 
-    Arg:
-        model (class): Tensorflow keras model
-
-    Returns:
-        class: Compiled model
-
+    Args:
+        model: Tensorflow keras sequential model
     """
 
     return model.compile(
@@ -80,7 +76,9 @@ def model_compile(model):
 #  2. Data processing  #
 ########################
 
-def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args: int) -> object:
+def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args: int) -> (
+        np.array, np.array, np.array, np.array
+):
     """Get the train test split by having as input the data and patient IDs to include in the training set.
 
     Args:
@@ -121,7 +119,20 @@ def train_test_set_split(x_array: np.array, y_array: np.array, dic: dict, *args:
     return x_train, x_test, y_train, y_test
 
 
-def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndarray, y_test: np.ndarray):
+def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndarray, y_test: np.ndarray) -> (
+        object, object
+):
+    """Transforms split data to tensorflow datasets, shuffling them and cut into batches.
+
+    Args:
+        x_train: features train data
+        x_test: features test data
+        y_train: label train data
+        y_test: label test data
+
+    Returns:
+        Two tensorflow datasets. The train and validation datasets.
+    """
     x_train = tf.convert_to_tensor(x_train)
     x_test = tf.convert_to_tensor(x_test)
     y_train = tf.convert_to_tensor(y_train)
@@ -139,8 +150,13 @@ def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndar
 #  3. Results  #
 ################
 
-def plot_curves(history, metrics):
-    """Plot metrics"""
+def plot_curves(history: tf.keras.callbacks.History, metrics: list) -> None:
+    """Plot metrics
+
+    Args:
+        history: history of model.fit function.
+        metrics: list of metrics to be plotted.
+    """
 
     nrows = 1
     ncols = 2
@@ -157,18 +173,18 @@ def plot_curves(history, metrics):
         plt.show()
 
 
-def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: np.ndarray, z: np.ndarray):
+def majority_vote(all_predictions: list, dic: dict, k: int, i: int, y: np.ndarray, z: np.ndarray) -> None:
     """Creates a majority vote prediction.
 
     Args:
-        all_predictions (list): [0, 5, 3] e.g. out of the 8 2-second data for a specific patient 0 were Healthy,
+        all_predictions: List. Eg: [0, 5, 3] out of the 8 2-second data for a specific patient 0 were Healthy,
                                 5 MCI, and 3 AD.
-        dic (dict): A dictionary with 9 key value pairs. We add +1 on the corresponding value, based on
+        dic: A dictionary with 9 key value pairs. We add +1 on the corresponding value, based on
                     what the Label was (0, 1 or 2) and what the prediction was (0, 1 or 2).
-        k (int): An iterator to keep track of Patient's ID for each 2-second window.
-        i (int): An iterator to keep track of the number of 2-second window.
-        y (numpy.ndarray): Numpy array of all labels for each 2-second window.
-        z (numpy.ndarray): Numpy array of all patient's IDs for each 2-second window.
+        k: An iterator to keep track of Patient's ID for each 2-second window.
+        i: An iterator to keep track of the number of 2-second window.
+        y: Numpy array of all labels for each 2-second window.
+        z: Numpy array of all patient's IDs for each 2-second window.
     """
 
     prediction = all_predictions.index(max(all_predictions))
