@@ -12,6 +12,7 @@ counts = [0, 0, 0]
 # Track Z: Patients
 c = 0
 patients = []
+
 # Report of the dataset
 col = ["Patient", "Start", "End", "Class"]
 df = pd.DataFrame(columns=col)
