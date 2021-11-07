@@ -7,7 +7,7 @@
    - Set paths, model, hyperparameters, and other needed constants.
 <br>
 
-* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/support_functions.py">Functions</a> <br>
+* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions.py">Functions</a> <br>
    - Support functions to: Create model, compile model, split the dataset, numpy to tensorflow dataset transformations, majority vote, etc.
 <br>
 
