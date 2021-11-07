@@ -46,7 +46,8 @@ for patient_out in range(54):
         train,
         validation_data=validation,
         batch_size=BATCH_SIZE,
-        epochs=6
+        epochs=EPOCHS,
+        callbacks=[lr_reducer],
     )
 
     # Accuracy - loss plots
@@ -61,6 +62,7 @@ for patient_out in range(54):
 
     df = df.append(dictionary, ignore_index=True)
 
+    # Save the file on each iteration, so we can pick up from where we left, if we stop the code.
     df.to_csv(PATH + "/report_out.csv", index=False)
 
 df.to_csv(PATH + "/report_out_f.csv", index=False)
