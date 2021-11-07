@@ -17,7 +17,7 @@ from common.constants import (
     lr_reducer,
     dic,
 )
-from common.support_functions import (
+from common.functions import (
     train_test_set_split,
     tensor_preparation,
     model_compile,
