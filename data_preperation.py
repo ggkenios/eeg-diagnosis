@@ -45,16 +45,14 @@ for label in CLASS_LIST:
 
         array = np.array(raw.to_data_frame().iloc[:, 1:])[start: end]
         length = array.shape[0]
-        del start, end
 
-        if length >= TIME_POINTS:
-            # Cut into batches, append into a numpy array of shape (-1, TIME_POINTS, 19) and count to create labels
-            for batch in range(int(length / TIME_POINTS)):
-                cut = array[TIME_POINTS * batch: TIME_POINTS * (batch + 1)]
-                data.append(cut)
-                counts[CLASS_LIST.index(label)] += 1
-                patients.append(c)
-            c += 1
+        # Cut into batches, append into a numpy array of shape (-1, TIME_POINTS, 19) and count to create labels
+        for batch in range(int(length / TIME_POINTS)):
+            cut = array[TIME_POINTS * batch: TIME_POINTS * (batch + 1)]
+            data.append(cut)
+            counts[CLASS_LIST.index(label)] += 1
+            patients.append(c)
+        c += 1
 
 x = np.array(data)
 y = np.array([0] * counts[0] + [1] * counts[1] + [2] * counts[2])
