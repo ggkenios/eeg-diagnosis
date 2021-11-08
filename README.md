@@ -24,7 +24,7 @@
 
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train.py">Model Train: By Segment</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_segments.py">Model Train: By Segment</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, in a balanced way, in terms of labels in train and test sets. <br>
    - Read the model from support_functions.py <br>
