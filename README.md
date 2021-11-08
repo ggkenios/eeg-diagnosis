@@ -43,7 +43,7 @@
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_patient_leave1out.py">Model Train: By Patient - Leave 1 Out</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, leaving one patient out at a time. <br>
-   - Reads the model from sfunctions.py <br>
+   - Reads the model from functions.py <br>
    - Trains it. <br>
    
 <br>
