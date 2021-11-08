@@ -24,7 +24,7 @@
 
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train.py">Model Train</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train.py">Model Train: By Segment</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, in a balanced way, in terms of labels in train and test sets. <br>
    - Read the model from support_functions.py <br>
@@ -32,7 +32,15 @@
    
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_by_patient.py">Model Train by patient</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_by_patient.py">Model Train: By Patient - 6 fold</a> <br>
+   - Reads the numpy files created from data_preperation.py <br>
+   - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set. <br>
+   - Read the model from support_functions.py <br>
+   - Train it. <br>
+   
+<br>
+
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_by_patient.py">Model Train: By Patient - 6 fold</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set. <br>
    - Read the model from support_functions.py <br>
