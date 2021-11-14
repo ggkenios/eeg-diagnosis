@@ -1,6 +1,6 @@
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; <img src="https://i.imgur.com/UwbMboU.png" width="190" height="200">
 
-# &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; Thesis
+# &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &nbsp; EEG Diagnosis
 
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/tree/main/common">Common Folder</a> <br>
 * <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/constants.py">Constants</a> <br>
