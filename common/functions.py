@@ -2,7 +2,8 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import models, losses
 from tensorflow.keras.utils import to_categorical
-from tensorflow.keras.layers import LSTM, Dense, BatchNormalization, Dropout, Activation
+from tensorflow.keras.layers import LSTM, Dense, BatchNormalization, Dropout, Activation, Conv1D
+from tensorflow.keras.regularizers import L1, L2, L1L2
 import matplotlib.pyplot as plt
 
 from common.constants import UNITS, TIME_POINTS, NUMBER_OF_CHANNELS, OUTPUT_SIZE, LEARNING_RATE, RESHUFFLE, BATCH_SIZE
@@ -21,13 +22,13 @@ def model_build():
 
     rnn_model = models.Sequential(
         [
-            tf.keras.layers.Conv1D(UNITS, 3, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
+            Conv1D(UNITS, 3, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             BatchNormalization(),
             Activation('relu'),
             Dropout(0.2),
             LSTM(UNITS),
             BatchNormalization(),
-            Dense(16, kernel_regularizer=tf.keras.regularizers.L1(0.001)),
+            Dense(16, kernel_regularizer=L1(0.001)),
             BatchNormalization(),
             Activation('relu'),
             Dropout(0.2),
