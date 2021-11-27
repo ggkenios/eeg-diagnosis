@@ -25,7 +25,6 @@ def model_build():
             Conv1D(UNITS, 3, input_shape=(TIME_POINTS, NUMBER_OF_CHANNELS)),
             BatchNormalization(),
             Activation('relu'),
-            Dropout(0.2),
             LSTM(UNITS),
             BatchNormalization(),
             Dense(16, kernel_regularizer=L1(0.001)),
