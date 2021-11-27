@@ -1,6 +1,7 @@
 import mne
 import numpy as np
 import pandas as pd
+from scipy.fft import fft
 from os import listdir
 
 from common import PATH, PATH_DATA, CLASS_LIST, CHANNELS, TIME_POINTS
@@ -22,9 +23,9 @@ for label in CLASS_LIST:
         file_path = f"{PATH_DATA}/{label}/{patient}"
 
         # Read the edf and get the annotations
-        raw = mne.io.read_raw_edf(file_path)
+        raw = mne.io.read_raw_edf(file_path, preload=True)
         raw.pick_channels(CHANNELS)
-        raw.load_data()
+        raw.filter(1, 40)
         anno = mne.events_from_annotations(raw)
 
         # Here we want to find starting and ending point for closed eyes.
@@ -52,6 +53,7 @@ for label in CLASS_LIST:
         # Cut into batches, append into a numpy array of shape (-1, TIME_POINTS, 19) and count to create labels
         for batch in range(int(length / TIME_POINTS)):
             cut = array[TIME_POINTS * batch: TIME_POINTS * (batch + 1)]
+            cut = fft(cut)
             data.append(cut)
             counts[CLASS_LIST.index(label)] += 1
             patients.append(c)
