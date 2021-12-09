@@ -1,15 +1,15 @@
 import mne
 import numpy as np
 import pandas as pd
-from scipy.fft import fft
 from os import listdir
 
-from common import PATH, PATH_DATA, CLASS_LIST, CHANNELS, TIME_POINTS
+from common import PATH, PATH_DATA, CLASS_LIST, CHANNELS, TIME_POINTS, CLASS_NUMBER, PATH_REPORTS
+
 
 # Track X: Data
 data = []
 # Track Y: Labels
-counts = [0, 0, 0]
+counts = CLASS_NUMBER * [0]
 # Track Z: Patients
 c = 0
 patients = []
@@ -25,7 +25,12 @@ for label in CLASS_LIST:
         # Read the edf and get the annotations
         raw = mne.io.read_raw_edf(file_path, preload=True)
         raw.pick_channels(CHANNELS)
-        raw.filter(1, 40)
+        raw.notch_filter(freqs=50)
+        raw.filter(l_freq=0.1, h_freq=32)
+
+        #ica = mne.preprocessing.ICA(n_components=19, random_state=0)
+        #ica.fit(raw)
+        #ica.apply(raw)
         anno = mne.events_from_annotations(raw)
 
         # Here we want to find starting and ending point for closed eyes.
@@ -50,10 +55,13 @@ for label in CLASS_LIST:
         array = np.array(raw.to_data_frame().iloc[:, 1:])[start: end]
         length = array.shape[0]
 
-        # Cut into batches, append into a numpy array of shape (-1, TIME_POINTS, 19) and count to create labels
+        # Cut into batches, append into a numpy array of shape (-1, TIME_POINTS, CHANNELS) and count to create labels
         for batch in range(int(length / TIME_POINTS)):
             cut = array[TIME_POINTS * batch: TIME_POINTS * (batch + 1)]
-            cut = fft(cut)
+            inverse = np.transpose(cut)
+            for number, channel in enumerate(inverse):
+                inverse[number] = np.fft.fft(channel)
+            cut = np.transpose(inverse)
             data.append(cut)
             counts[CLASS_LIST.index(label)] += 1
             patients.append(c)
@@ -75,4 +83,5 @@ z = np.array(patients)
 np.save(f"{PATH}/x_data.npy", x)
 np.save(f"{PATH}/y_data.npy", y)
 np.save(f"{PATH}/z_data.npy", z)
-df.to_csv(f"{PATH}/dataset.csv", index=False)
+
+df.to_csv(f"{PATH_REPORTS}/dataset.csv", index=False)

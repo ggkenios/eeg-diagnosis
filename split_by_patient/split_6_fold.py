@@ -7,10 +7,11 @@ from common import (
     EPOCHS,
     lr_reducer,
     model_build,
-    model_build_2,
     model_compile,
-    train_test_set_split,
+    train_test_patient_split,
     tensor_preparation,
+    checkpoints,
+    PATH_REPORTS,
 )
 
 
@@ -19,27 +20,22 @@ x = np.load(f"{PATH}/x_data.npy")
 y = np.load(f"{PATH}/y_data.npy")
 z = np.load(f"{PATH}/z_data.npy")
 
-# Folds for Cross Validation
 FOLDS = 6
 
-# Report
-col = ["Patient", "Val_accuracy", "Val_loss"]
+col = ["Patient_out", "Val_accuracy", "Max_val_accuracy", "Val_loss", "Min_val_loss"]
 df = pd.DataFrame(columns=col)
 
-unique, counts = np.unique(z, return_counts=True)
-patient_counts = dict(zip(unique, counts))
+for fold in range(FOLDS):
+    patient_out = [j for j in range(len(np.unique(z))) if (j+fold) % FOLDS == 0]
 
-for i in range(FOLDS):
-    patient_out = [j for j in range(len(unique)) if (j+i) % FOLDS == 0]
-
-    # Split dataset by patient (1.4 function)
+    # Split dataset by patient (2.2 function)
     (x_train,
      x_test,
      y_train,
      y_test,
-     ) = train_test_set_split(x, y, patient_counts, *patient_out)
+     ) = train_test_patient_split(x, y, z, *patient_out)
 
-    # Create a shuffled tensorflow dataset (1.4 function)
+    # Create a shuffled tensorflow dataset (2.2 function)
     train, validation = tensor_preparation(x_train, x_test, y_train, y_test)
 
     # Build and compile the model
@@ -52,18 +48,21 @@ for i in range(FOLDS):
         validation_data=validation,
         batch_size=BATCH_SIZE,
         epochs=EPOCHS,
-        callbacks=[lr_reducer],
+        callbacks=[checkpoints("p", fold), lr_reducer],
     )
 
     dictionary = {
         "Patient_out": patient_out,
         "Val_accuracy": history.history['val_accuracy'][-1],
+        "Max_val_accuracy": max(history.history['val_accuracy']),
         "Val_loss": history.history['val_loss'][-1],
+        "Min_val_loss": min(history.history['val_accuracy'])
     }
 
     df = df.append(dictionary, ignore_index=True)
 
     # Save every update, to keep the process from where it stopped
-    df.to_csv(f"{PATH}/report_6fold.csv", index=False)
+    df.to_csv(f"{PATH_REPORTS}/p_fold_{fold}.csv", index=False)
 
-df.to_csv(f"{PATH}/report_6fold_f.csv", index=False)
+df.to_csv(f"{PATH_REPORTS}/p_fold_finished.csv", index=False)
+
