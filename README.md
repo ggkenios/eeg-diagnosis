@@ -15,11 +15,11 @@
 <br>
    
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preprocessing.py">Data Preperation</a> <br>
-   * Reading data iteratively
-   * Applies band pass filter
-   * Applies notch filter
-   * Applies Fast Fourier Transform
-   * Stores them in 3 numpy files: <br>
+   * Reading data iteratively <br>
+   * Applies band pass filter <br>
+   * Applies notch filter <br>
+   * Applies Fast Fourier Transform <br>
+   * Stores data in 3 numpy files: <br>
      - x: Array of shape (-1, 1000, 19) for patient's data. So, basically a list of 2d arrays: 1000 datapoints (2 seconds-segment) for 19 channels. <br>
      - y: Array of shape (-1) that tracks the labels for each 2-second data segment. <br>
      - z: Array of shape (-1) that tracks the patient ID for each 2-second data segment. <br>
@@ -35,7 +35,7 @@
 
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_patient_6fold.py">Model Train: By Patient</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_patient.py">Model Train: By Patient</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set. <br>
    - Reads the model from model.py <br>
