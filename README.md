@@ -39,7 +39,7 @@
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set. <br>
    - Reads the model from model.py <br>
-   - Trains it. <br
+   - Trains it. <br>
    - Saves weights. <br>
 
 <br>
