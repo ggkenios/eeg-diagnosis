@@ -15,7 +15,11 @@
 <br>
    
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preprocessing.py">Data Preperation</a> <br>
-   * Reading data iteratively and stores them in 3 numpy files: <br>
+   * Reading data iteratively
+   * Applies band pass filter
+   * Applies notch filter
+   * Applies Fast Fourier Transform
+   * Stores them in 3 numpy files: <br>
      - x: Array of shape (-1, 1000, 19) for patient's data. So, basically a list of 2d arrays: 1000 datapoints (2 seconds-segment) for 19 channels. <br>
      - y: Array of shape (-1) that tracks the labels for each 2-second data segment. <br>
      - z: Array of shape (-1) that tracks the patient ID for each 2-second data segment. <br>
