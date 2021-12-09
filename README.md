@@ -8,14 +8,12 @@
 <br>
 
 * <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions.py">Functions</a> <br>
-   - Support functions to: Create model, compile model, split the dataset, numpy to tensorflow dataset transformations, majority vote, etc.
+   - <b>Model</b> related functions, like build, compile and checkpoint ones
+   - <b>Data processing</b> functions, mainly for patient split and tesnor preperation
+   - <b>Plot</b> functions, like train-val accuracy/loss, and confusion matrices
+   - <b>Voting ensemble</b> functions, both hard and soft, to make decisions per patient.
 <br>
-
-* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/confusion_matrix.py">Confusion Matrix</a> <br>
-   - Take the majority vote, after the model is trained, and create a confusion matrix, by patient.
-<br>
-<br>
-
+   
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preperation.py">Data Preperation</a> <br>
    * Reading data ilteratively and stores them in 3 numpy files: <br>
      - x: Array of shape (-1, 1000, 19) for patient's data. So, basically a list of 2d arrays: 1000 datapoints (2 seconds-segment) for 19 channels. <br>
@@ -32,7 +30,7 @@
    
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_patient_6fold.py">Model Train: By Patient - 6 Fold</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_patient_6fold.py">Model Train: By Patient</a> <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, 80-20, by patient, in a balanced way. That means that segments of the same patient cannot exist on both train and test set. <br>
    - Reads the model from functions.py <br>
@@ -40,10 +38,3 @@
 
 <br>
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/model_train_patient_leave1out.py">Model Train: By Patient - Leave 1 Out</a> <br>
-   - Reads the numpy files created from data_preperation.py <br>
-   - Splits them into train and test data, leaving one patient out at a time. <br>
-   - Reads the model from functions.py <br>
-   - Trains it. <br>
-   
-<br>
