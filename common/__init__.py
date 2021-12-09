@@ -3,7 +3,6 @@ from common.constants import (
     VALIDATION_SIZE,
     LEARNING_RATE,
     TIME_POINTS,
-    OUTPUT_SIZE,
     CLASS_LIST,
     BATCH_SIZE,
     PATH_DATA,
@@ -12,17 +11,21 @@ from common.constants import (
     EPOCHS,
     UNITS,
     PATH,
-    checkpoint_acc_2,
-    checkpoint_acc,
     lr_reducer,
-    dic,
 )
-from common.functions import (
-    train_test_set_split,
-    tensor_preparation,
-    model_compile,
-    majority_vote,
-    model_build_2,
+from common.functions.model import(
     model_build,
-    plot_curves,
+    model_build_2,
+    model_compile,
 )
+from common.functions.data_processing import(
+    get_patient_indexes,
+    train_test_patient_split,
+    tensor_preparation,
+)
+from common.functions.plots import(
+    plot_curves,
+    confusion_matrix_dict,
+    plot_confusion_matrix,
+)
+from common.functions.voting import voting

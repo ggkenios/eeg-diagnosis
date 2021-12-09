@@ -1,40 +1,31 @@
+from os import path, makedirs
 import tensorflow as tf
 
 # Model hyper-parameters
 LEARNING_RATE = 0.001
 BATCH_SIZE = 32
-EPOCHS = 40
+EPOCHS = 30
 UNITS = 512
 RESHUFFLE = True
 
-# Cut data into batches
-TIME_POINTS = 1000     # 500 equal to 1 second
+# Cut data into segments
+TIME_POINTS = 1000   # 500 equal to 1 second
 
 # Train-Test Ratio
 VALIDATION_SIZE = 0.2
 
 # Paths
 PATH = "C:/Users/thxsg/Documents/1. Thesis Data"
-PATH_DATA = f"{PATH}/my_dataset/"
+PATH_DATA = f"{PATH}/data"                # Here are the raw data
+PATH_REPORTS = f"{PATH}/reports"          # Here the reports will be stored
+PATH_CHECKPOINTS = f"{PATH}/checkpoints"  # Here the checkpoints will be stored
 
 # Classes
 CLASS_H = "Healthy"  # Class 0
 CLASS_MCI = "MCI"    # Class 1
 CLASS_AD = "AD"      # Class 2
 CLASS_LIST = [CLASS_H, CLASS_MCI, CLASS_AD]
-
-# Checkpoints
-checkpoint_acc = tf.keras.callbacks.ModelCheckpoint(
-    filepath=f"{PATH}/Checkpoints/Normal split/checkpoint.h5",
-    monitor='val_accuracy',
-    save_best_only=True
-)
-
-checkpoint_acc_2 = tf.keras.callbacks.ModelCheckpoint(
-    filepath=f"{PATH}/Checkpoints/Patient split/checkpoint.h5",
-    monitor='val_accuracy',
-    save_best_only=True
-)
+CLASS_NUMBER = len(CLASS_LIST)
 
 # Reducer
 lr_reducer = tf.keras.callbacks.ReduceLROnPlateau(
@@ -46,19 +37,13 @@ lr_reducer = tf.keras.callbacks.ReduceLROnPlateau(
     verbose=1
 )
 
-# Rest
+# Other
 CHANNELS = ['Fp1', 'Fp2', 'F3', 'F4', 'C3', 'C4', 'P3', 'P4', 'O1', 'O2', 'F7', 'F8', 'T3', 'T4', 'T5', 'T6', 'Fz', 'Cz', 'Pz']
 NUMBER_OF_CHANNELS = len(CHANNELS)
-OUTPUT_SIZE = len(CLASS_LIST)
+SHAPE = (TIME_POINTS, NUMBER_OF_CHANNELS)
 
-dic = {
-    "t0_p0": 0,
-    "t0_p1": 0,
-    "t0_p2": 0,
-    "t1_p0": 0,
-    "t1_p1": 0,
-    "t1_p2": 0,
-    "t2_p0": 0,
-    "t2_p1": 0,
-    "t2_p2": 0,
-}
+# Create directories if they do not exist
+PATH_LIST = [PATH, PATH_DATA, PATH_REPORTS, PATH_CHECKPOINTS]
+for directory in PATH_LIST:
+    if not path.exists(directory):
+        makedirs(directory)
