@@ -27,7 +27,7 @@
 <br>
 
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment">Model Train: By Segment</a> <br>
-The file contains 2 modules. One to run an <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_80_20.py">80-20 split</a> and the other a <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_80_20.py">5-fold cross-validation</a> one. <br>
+The file contains 2 modules. One to run an <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_80_20.py">80-20 split</a> and the other a <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_5_fold.py">5-fold cross-validation</a> one. <br>
    - Reads the numpy files created from data_preperation.py <br>
    - Splits them into train and test data, in a balanced way, in terms of labels in train and test sets. <br>
    - Reads the model from model.py <br>
