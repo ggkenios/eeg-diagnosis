@@ -9,9 +9,9 @@
 
 * <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions">Functions</a> directory<br>
    - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/model.py">Model</a></b> related functions, like build, compile and checkpoint ones
-   - <b>Data processing</b> functions, mainly for patient split and tesnor preperation
-   - <b>Plot</b> functions, like train-val accuracy/loss, and confusion matrices
-   - <b>Voting ensemble</b> functions, both hard and soft, to make decisions per patient.
+   - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/data_processing.py">Data processing</a></b> functions, mainly for patient split and tesnor preperation
+   - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/plot.py">Plot</a></b> functions, like train-val accuracy/loss, and confusion matrices
+   - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/voting.py">Voting</a></b> ensemble functions, both hard and soft, to make decisions per patient.
 <br>
    
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preprocessing.py">Data Preperation</a> <br>
