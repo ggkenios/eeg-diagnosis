@@ -2,12 +2,12 @@
 
 # &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; EEG Diagnosis
 
-## <a href="https://github.com/ggkenios/eeg-diagnosis/tree/main/common">Common Folder</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/tree/main/common">Common</a> directory <br>
 * <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/constants.py">Constants</a> <br>
    - Set paths, model, hyperparameters, and other needed constants.
 <br>
 
-* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions">Functions</a> <br>
+* <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions">Functions</a> directory<br>
    - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/model.py">Model</a></b> related functions, like build, compile and checkpoint ones
    - <b>Data processing</b> functions, mainly for patient split and tesnor preperation
    - <b>Plot</b> functions, like train-val accuracy/loss, and confusion matrices
