@@ -2,14 +2,19 @@ import numpy as np
 
 from common import (
     PATH,
+    MODEL,
     BATCH_SIZE,
-    EPOCHS,
+    EPOCHS_PATIENT,
+    PATH_CHECKPOINTS,
+    lstm,
+    voting,
+    conv_lstm,
+    conv_blstm,
     lr_reducer,
-    model_build,
-    model_compile,
-    train_test_patient_split,
-    tensor_preparation,
     checkpoints,
+    model_compile,
+    tensor_preparation,
+    train_test_patient_split,
 )
 
 
@@ -21,10 +26,11 @@ z = np.load(f"{PATH}/z_data.npy")
 patient_out = [2, 10, 15, 20, 25, 30, 37, 42, 51]
 
 # Split dataset by patient (2.2 function)
-(x_train,
-  x_test,
-  y_train,
-  y_test,
+(
+    x_train,
+    x_test,
+    y_train,
+    y_test,
   ) = train_test_patient_split(x, y, z, *patient_out)
 
 # Create a shuffled tensorflow dataset (2.2 function)
@@ -39,7 +45,7 @@ history = model.fit(
     train,
     validation_data=validation,
     batch_size=BATCH_SIZE,
-    epochs=EPOCHS,
+    epochs=EPOCHS_PATIENT,
     callbacks=[checkpoints("p"), lr_reducer],
 )
 

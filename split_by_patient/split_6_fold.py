@@ -2,16 +2,21 @@ import numpy as np
 import pandas as pd
 
 from common import (
-    PATH,
-    BATCH_SIZE,
-    EPOCHS,
+    voting,
     lr_reducer,
-    model_build,
+    lstm,
+    conv_lstm,
+    conv_blstm,
     model_compile,
     train_test_patient_split,
     tensor_preparation,
     checkpoints,
+    PATH,
+    MODEL,
+    EPOCHS_PATIENT,
+    BATCH_SIZE,
     PATH_REPORTS,
+    PATH_CHECKPOINTS,
 )
 
 
@@ -22,24 +27,25 @@ z = np.load(f"{PATH}/z_data.npy")
 
 FOLDS = 6
 
-col = ["Patient_out", "Val_accuracy", "Max_val_accuracy", "Val_loss", "Min_val_loss"]
-df = pd.DataFrame(columns=col)
+df = pd.DataFrame()
 
 for fold in range(FOLDS):
+    print("------", f"FOLD: {fold}", sep="\n")
     patient_out = [j for j in range(len(np.unique(z))) if (j+fold) % FOLDS == 0]
 
     # Split dataset by patient (2.2 function)
-    (x_train,
-     x_test,
-     y_train,
-     y_test,
-     ) = train_test_patient_split(x, y, z, *patient_out)
+    (
+        x_train,
+        x_test,
+        y_train,
+        y_test,
+    ) = train_test_patient_split(x, y, z, *patient_out)
 
     # Create a shuffled tensorflow dataset (2.2 function)
     train, validation = tensor_preparation(x_train, x_test, y_train, y_test)
 
     # Build and compile the model
-    model = model_build()
+    model = locals()[MODEL]()
     model_compile(model)
 
     # Start training
@@ -47,10 +53,15 @@ for fold in range(FOLDS):
         train,
         validation_data=validation,
         batch_size=BATCH_SIZE,
-        epochs=EPOCHS,
+        epochs=EPOCHS_PATIENT,
         callbacks=[checkpoints("p", fold), lr_reducer],
     )
 
+    # Plot confusion Matrix for validation samples
+    model.load_weights(f"{PATH_CHECKPOINTS}/p_{fold}.h5")
+    voting(model, x, y, z, *patient_out)
+
+    # Export reporting
     dictionary = {
         "Patient_out": patient_out,
         "Val_accuracy": history.history['val_accuracy'][-1],
@@ -58,10 +69,7 @@ for fold in range(FOLDS):
         "Val_loss": history.history['val_loss'][-1],
         "Min_val_loss": min(history.history['val_accuracy'])
     }
-
     df = df.append(dictionary, ignore_index=True)
-
-    # Save every update, to keep the process from where it stopped
     df.to_csv(f"{PATH_REPORTS}/p_fold_{fold}.csv", index=False)
 
 df.to_csv(f"{PATH_REPORTS}/p_fold_finished.csv", index=False)

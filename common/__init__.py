@@ -2,6 +2,8 @@ from common.constants import (
     NUMBER_OF_CHANNELS,
     PATH_CHECKPOINTS,
     VALIDATION_SIZE,
+    EPOCHS_SEGMENT,
+    EPOCHS_PATIENT,
     LEARNING_RATE,
     CLASS_NUMBER,
     PATH_REPORTS,
@@ -11,14 +13,15 @@ from common.constants import (
     PATH_DATA,
     RESHUFFLE,
     CHANNELS,
-    EPOCHS,
+    MODEL,
     UNITS,
     PATH,
     lr_reducer,
 )
 from common.functions.model import(
-    model_build,
-    model_build_2,
+    lstm,
+    conv_lstm,
+    conv_blstm,
     model_compile,
     checkpoints,
 )

@@ -4,15 +4,18 @@ from tensorflow.keras.utils import to_categorical
 
 from common import (
     PATH,
-    EPOCHS,
+    MODEL,
     BATCH_SIZE,
+    EPOCHS_SEGMENT,
     VALIDATION_SIZE,
-    tensor_preparation,
-    model_build,
-    model_compile,
+    lstm,
+    conv_lstm,
+    conv_blstm,
     lr_reducer,
+    plot_curves,
     checkpoints,
-    plot_curves
+    model_compile,
+    tensor_preparation,
 )
 
 
@@ -37,7 +40,7 @@ y_test = to_categorical(y_test)
 train, validation = tensor_preparation(x_train, x_test, y_train, y_test)
 
 # Build and compile the model
-model = model_build()
+model = locals()[MODEL]()
 model_compile(model)
 
 # Start training
@@ -45,7 +48,7 @@ history = model.fit(
     train,
     validation_data=validation,
     batch_size=BATCH_SIZE,
-    epochs=EPOCHS,
+    epochs=EPOCHS_SEGMENT,
     callbacks=[checkpoints("s"), lr_reducer],
 )
 

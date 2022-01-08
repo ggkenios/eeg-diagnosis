@@ -3,14 +3,17 @@ from tensorflow.keras.utils import to_categorical
 
 from common import (
     PATH,
-    EPOCHS,
+    MODEL,
     BATCH_SIZE,
-    tensor_preparation,
-    model_build,
-    model_compile,
+    EPOCHS_SEGMENT,
+    lstm,
+    conv_lstm,
+    conv_blstm,
     lr_reducer,
+    plot_curves,
     checkpoints,
-    plot_curves
+    model_compile,
+    tensor_preparation,
 )
 
 
@@ -42,7 +45,7 @@ for fold in range(FOLDS):
     train, validation = tensor_preparation(x_train, x_test, y_train, y_test)
 
     # Build and compile the model
-    model = model_build()
+    model = locals()[MODEL]()
     model_compile(model)
 
     # Start training
@@ -50,9 +53,10 @@ for fold in range(FOLDS):
         train,
         validation_data=validation,
         batch_size=BATCH_SIZE,
-        epochs=EPOCHS,
+        epochs=EPOCHS_SEGMENT,
         callbacks=[checkpoints("s", fold), lr_reducer],
     )
 
     # Accuracy - loss plots
     plot_curves(history, ['accuracy', 'loss'])
+

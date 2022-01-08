@@ -1,10 +1,15 @@
 from os import path, makedirs
 import tensorflow as tf
 
+# Model
+MODEL = "conv_lstm"  # In ["lstm", "conv_blstm", "conv_lstm"]
+
 # Model hyper-parameters
 LEARNING_RATE = 0.001
+EPOCHS_SEGMENT = 40
+EPOCHS_PATIENT = 15
 BATCH_SIZE = 32
-EPOCHS = 30
+
 UNITS = 512
 RESHUFFLE = True
 
@@ -15,7 +20,7 @@ TIME_POINTS = 1000   # 500 equal to 1 second
 VALIDATION_SIZE = 0.2
 
 # Paths
-PATH = "C:/Users/thxsg/Documents/1. Thesis Data"
+PATH = "/Users/georgiosgkenios/Documents/thesis"
 PATH_DATA = f"{PATH}/data"                # Here are the raw data
 PATH_REPORTS = f"{PATH}/reports"          # Here the reports will be stored
 PATH_CHECKPOINTS = f"{PATH}/checkpoints"  # Here the checkpoints will be stored
@@ -47,3 +52,5 @@ PATH_LIST = [PATH, PATH_DATA, PATH_REPORTS, PATH_CHECKPOINTS]
 for directory in PATH_LIST:
     if not path.exists(directory):
         makedirs(directory)
+
+

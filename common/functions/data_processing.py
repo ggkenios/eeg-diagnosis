@@ -39,8 +39,7 @@ def get_patient_indexes(z_array: np.array, *args: int) -> list:
 
 
 def train_test_patient_split(x_array: np.array, y_array: np.array, z_array: np.array, *args: int) -> (
-        np.array, np.array, np.array, np.array
-):
+        np.array, np.array, np.array, np.array):
     """Get the train test split by having as input the data and patient IDs to include in the training set.
 
     Args:
@@ -56,17 +55,20 @@ def train_test_patient_split(x_array: np.array, y_array: np.array, z_array: np.a
         y_test : Test split of label data.
     """
 
+    x_cut = x_array
+    y_cut = y_array
+
     # 1-hot-encode labels
-    y_array = to_categorical(y_array)
+    y_cut = to_categorical(y_cut)
 
     # Get patient indexes to exclude
     index_list = get_patient_indexes(z_array, *args)
 
     # Finally create a train-test data split.
-    x_test = x_array[index_list]
-    y_test = y_array[index_list]
-    x_train = np.delete(x_array, index_list, axis=0)
-    y_train = np.delete(y_array, index_list, axis=0)
+    x_test = x_cut[index_list]
+    y_test = y_cut[index_list]
+    x_train = np.delete(x_cut, index_list, axis=0)
+    y_train = np.delete(y_cut, index_list, axis=0)
 
     return x_train, x_test, y_train, y_test
 
@@ -93,9 +95,9 @@ def tensor_preparation(x_train: np.ndarray, x_test: np.ndarray, y_train: np.ndar
 
     train = (
         tf.data.Dataset.from_tensor_slices((x_train, y_train))
-        .shuffle(buffer_size=y_train.shape[0] + y_test.shape[0], seed=1, reshuffle_each_iteration=RESHUFFLE)
-        .batch(BATCH_SIZE)
+            .shuffle(buffer_size=y_train.shape[0] + y_test.shape[0], seed=1, reshuffle_each_iteration=RESHUFFLE)
+            .batch(BATCH_SIZE)  # , drop_remainder=True)
     )
-    validation = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(BATCH_SIZE)
+    validation = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(BATCH_SIZE)  # , drop_remainder=True)
 
     return train, validation
