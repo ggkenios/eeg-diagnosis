@@ -28,6 +28,7 @@
 
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment">Split by segment</a> directory <br>
 In this approach we split data into training-test sets by segments. That means segments from a patient exist in both train and test sets. <br>
+<br>
 The directory contains 2 modules. One to run an <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_80_20.py">80-20 split</a> and the other a <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_segment/split_5_fold.py">5-fold cross-validation</a> one. <br>
 Each module: <br>
    - Reads the numpy files created from data_preperation.py <br>
@@ -40,6 +41,7 @@ Each module: <br>
 
 ## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_patient">Split by patient</a> directory <br>
 In this approach we split data into training-test sets by patient. That means segments from a patient can only exist in either train or test set. <br>
+<br>
 The file contains 2 modules. One to run an <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_patient/split_45_9.py">45-9 split</a> and the other a <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/split_by_patient/split_6_fold.py">6-fold cross-validation</a> one. <br>
 Each module: <br>
    - Reads the numpy files created from data_preperation.py <br>
