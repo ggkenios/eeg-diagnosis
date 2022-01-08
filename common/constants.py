@@ -20,7 +20,7 @@ TIME_POINTS = 1000   # 500 equal to 1 second
 VALIDATION_SIZE = 0.2
 
 # Paths
-PATH = "/Users/georgiosgkenios/Documents/thesis"
+PATH = "/Users/georgiosgkenios/Movies/thesis"
 PATH_DATA = f"{PATH}/data"                # Here are the raw data
 PATH_REPORTS = f"{PATH}/reports"          # Here the reports will be stored
 PATH_CHECKPOINTS = f"{PATH}/checkpoints"  # Here the checkpoints will be stored
