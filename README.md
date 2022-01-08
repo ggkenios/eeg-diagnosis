@@ -8,7 +8,7 @@
 <br>
 
 * <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions">Functions</a> <br>
-   - <b>Model</b> related functions, like build, compile and checkpoint ones
+   - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/model.py">Model</a></b> related functions, like build, compile and checkpoint ones
    - <b>Data processing</b> functions, mainly for patient split and tesnor preperation
    - <b>Plot</b> functions, like train-val accuracy/loss, and confusion matrices
    - <b>Voting ensemble</b> functions, both hard and soft, to make decisions per patient.
