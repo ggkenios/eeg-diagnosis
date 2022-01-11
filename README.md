@@ -14,7 +14,7 @@
    - <b><a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/common/functions/voting.py">Voting</a></b> ensemble functions, both hard and soft, to make decisions per patient.
 <br>
    
-## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preprocessing.py">Data Preperation</a> <br>
+## <a href="https://github.com/ggkenios/eeg-diagnosis/blob/main/data_preprocessing.py">Data Prepocessing</a> <br>
    * Reading data iteratively <br>
    * Applies band pass filter <br>
    * Applies notch filter <br>
