@@ -23,7 +23,7 @@
      - x: Array of shape (N, 1000, 19) for patient's data. So, basically a list of 2d arrays: 1000 datapoints (2 seconds-segment) for 19 channels. <br>
      - y: Array of shape (N) that tracks the labels for each 2-second data segment. <br>
      - z: Array of shape (N) that tracks the patient ID for each 2-second data segment. <br>
-     N: number of segments
+     N = number of segments
 
 
 <br>
